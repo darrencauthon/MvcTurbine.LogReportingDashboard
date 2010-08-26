@@ -92,8 +92,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SampleDatabase.mdf" />
+    <Content Include="App_Data\SampleDatabase_log.LDF">
+      <DependentUpon>SampleDatabase.mdf</DependentUpon>
+    </Content>
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -124,9 +131,7 @@
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Users\cauthond\Downloads\mvc_logging\MVCLoggingSolution\MvcLoggingDemo\MvcLoggingDemo.csproj">
       <Project>{CEBED126-50CE-4F20-B723-E879CD9153D2}</Project>
