@@ -131,9 +131,8 @@
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Users\cauthond\Downloads\mvc_logging\MVCLoggingSolution\MvcLoggingDemo\MvcLoggingDemo.csproj">
+    <ProjectReference Include="..\MVCLoggingSolution\MvcLoggingDemo\MvcLoggingDemo.csproj">
       <Project>{CEBED126-50CE-4F20-B723-E879CD9153D2}</Project>
       <Name>MvcLoggingDemo</Name>
     </ProjectReference>

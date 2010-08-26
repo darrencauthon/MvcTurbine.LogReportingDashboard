@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcTurbine.LogReportingDashboard", "MvcTurbine.LogReportingDashboard\MvcTurbine.LogReportingDashboard.csproj", "{A8559E00-39B5-4335-80A5-AE166ECE6711}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcLoggingDemo", "..\..\..\Users\cauthond\Downloads\mvc_logging\MVCLoggingSolution\MvcLoggingDemo\MvcLoggingDemo.csproj", "{CEBED126-50CE-4F20-B723-E879CD9153D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcLoggingDemo", "MVCLoggingSolution\MvcLoggingDemo\MvcLoggingDemo.csproj", "{CEBED126-50CE-4F20-B723-E879CD9153D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
