@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SampleDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="SampleDatabaseModelStoreContainer">
+          <EntitySet Name="aspnet_WebEvent_Events" EntityType="SampleDatabaseModel.Store.aspnet_WebEvent_Events" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ELMAH_Error" EntityType="SampleDatabaseModel.Store.ELMAH_Error" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Log4Net_Error" EntityType="SampleDatabaseModel.Store.Log4Net_Error" store:Type="Tables" store:Schema="dbo" store:Name="Log4Net_Error">
+            <DefiningQuery>SELECT 
+      [Log4Net_Error].[Id] AS [Id], 
+      [Log4Net_Error].[Date] AS [Date], 
+      [Log4Net_Error].[Thread] AS [Thread], 
+      [Log4Net_Error].[Level] AS [Level], 
+      [Log4Net_Error].[Logger] AS [Logger], 
+      [Log4Net_Error].[Message] AS [Message], 
+      [Log4Net_Error].[Exception] AS [Exception]
+      FROM [dbo].[Log4Net_Error] AS [Log4Net_Error]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="NLog_Error" EntityType="SampleDatabaseModel.Store.NLog_Error" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="aspnet_WebEvent_Events">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="EventTimeUtc" Type="datetime" Nullable="false" />
+          <Property Name="EventTime" Type="datetime" Nullable="false" />
+          <Property Name="EventType" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="EventSequence" Type="decimal" Nullable="false" Precision="19" />
+          <Property Name="EventOccurrence" Type="decimal" Nullable="false" Precision="19" />
+          <Property Name="EventCode" Type="int" Nullable="false" />
+          <Property Name="EventDetailCode" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1024" />
+          <Property Name="ApplicationPath" Type="nvarchar" MaxLength="256" />
+          <Property Name="ApplicationVirtualPath" Type="nvarchar" MaxLength="256" />
+          <Property Name="MachineName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="RequestUrl" Type="nvarchar" MaxLength="1024" />
+          <Property Name="ExceptionType" Type="nvarchar" MaxLength="256" />
+          <Property Name="Details" Type="ntext" />
+        </EntityType>
+        <EntityType Name="ELMAH_Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Application" Type="nvarchar" Nullable="false" MaxLength="60" />
+          <Property Name="Host" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Source" Type="nvarchar" Nullable="false" MaxLength="60" />
+          <Property Name="Message" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="User" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+          <Property Name="TimeUtc" Type="datetime" Nullable="false" />
+          <Property Name="Sequence" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AllXml" Type="ntext" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'C:\CODE\MVCTURBINE.LOGREPORTINGDASHBOARD\SRC\MVCTURBINE.LOGREPORTINGDASHBOARD\APP_DATA\SAMPLEDATABASE.MDF.dbo.Log4Net_Error' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Log4Net_Error">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="Thread" />
+            <PropertyRef Name="Level" />
+            <PropertyRef Name="Logger" />
+            <PropertyRef Name="Message" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Thread" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Level" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Logger" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Message" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="Exception" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="NLog_Error">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="time_stamp" Type="datetime" Nullable="false" />
+          <Property Name="host" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="type" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="source" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="level" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="logger" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="stacktrace" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="allxml" Type="ntext" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SampleDatabaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="SampleDatabaseEntities">
+          <EntitySet Name="aspnet_WebEvent_Events" EntityType="SampleDatabaseModel.aspnet_WebEvent_Events" />
+          <EntitySet Name="ELMAH_Error" EntityType="SampleDatabaseModel.ELMAH_Error" />
+          <EntitySet Name="Log4Net_Error" EntityType="SampleDatabaseModel.Log4Net_Error" />
+          <EntitySet Name="NLog_Error" EntityType="SampleDatabaseModel.NLog_Error" />
+        </EntityContainer>
+        <EntityType Name="aspnet_WebEvent_Events">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="true" />
+          <Property Name="EventTimeUtc" Type="DateTime" Nullable="false" />
+          <Property Name="EventTime" Type="DateTime" Nullable="false" />
+          <Property Name="EventType" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="EventSequence" Type="Decimal" Nullable="false" Precision="19" Scale="0" />
+          <Property Name="EventOccurrence" Type="Decimal" Nullable="false" Precision="19" Scale="0" />
+          <Property Name="EventCode" Type="Int32" Nullable="false" />
+          <Property Name="EventDetailCode" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" />
+          <Property Name="ApplicationPath" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="ApplicationVirtualPath" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="MachineName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="RequestUrl" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" />
+          <Property Name="ExceptionType" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Details" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ELMAH_Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="Guid" Nullable="false" />
+          <Property Name="Application" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
+          <Property Name="Host" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Source" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="User" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+          <Property Name="TimeUtc" Type="DateTime" Nullable="false" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AllXml" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Log4Net_Error">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="Thread" />
+            <PropertyRef Name="Level" />
+            <PropertyRef Name="Logger" />
+            <PropertyRef Name="Message" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Thread" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Level" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Logger" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="4000" Unicode="false" FixedLength="false" />
+          <Property Name="Exception" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="NLog_Error">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="time_stamp" Type="DateTime" Nullable="false" />
+          <Property Name="host" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="source" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="message" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="level" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="logger" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="stacktrace" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="allxml" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="SampleDatabaseModelStoreContainer" CdmEntityContainer="SampleDatabaseEntities">
+          <EntitySetMapping Name="aspnet_WebEvent_Events"><EntityTypeMapping TypeName="SampleDatabaseModel.aspnet_WebEvent_Events"><MappingFragment StoreEntitySet="aspnet_WebEvent_Events">
+            <ScalarProperty Name="EventId" ColumnName="EventId" />
+            <ScalarProperty Name="EventTimeUtc" ColumnName="EventTimeUtc" />
+            <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+            <ScalarProperty Name="EventType" ColumnName="EventType" />
+            <ScalarProperty Name="EventSequence" ColumnName="EventSequence" />
+            <ScalarProperty Name="EventOccurrence" ColumnName="EventOccurrence" />
+            <ScalarProperty Name="EventCode" ColumnName="EventCode" />
+            <ScalarProperty Name="EventDetailCode" ColumnName="EventDetailCode" />
+            <ScalarProperty Name="Message" ColumnName="Message" />
+            <ScalarProperty Name="ApplicationPath" ColumnName="ApplicationPath" />
+            <ScalarProperty Name="ApplicationVirtualPath" ColumnName="ApplicationVirtualPath" />
+            <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+            <ScalarProperty Name="RequestUrl" ColumnName="RequestUrl" />
+            <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+            <ScalarProperty Name="Details" ColumnName="Details" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ELMAH_Error"><EntityTypeMapping TypeName="SampleDatabaseModel.ELMAH_Error"><MappingFragment StoreEntitySet="ELMAH_Error">
+            <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+            <ScalarProperty Name="Application" ColumnName="Application" />
+            <ScalarProperty Name="Host" ColumnName="Host" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+            <ScalarProperty Name="Source" ColumnName="Source" />
+            <ScalarProperty Name="Message" ColumnName="Message" />
+            <ScalarProperty Name="User" ColumnName="User" />
+            <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+            <ScalarProperty Name="TimeUtc" ColumnName="TimeUtc" />
+            <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+            <ScalarProperty Name="AllXml" ColumnName="AllXml" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Log4Net_Error"><EntityTypeMapping TypeName="SampleDatabaseModel.Log4Net_Error"><MappingFragment StoreEntitySet="Log4Net_Error">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Thread" ColumnName="Thread" />
+            <ScalarProperty Name="Level" ColumnName="Level" />
+            <ScalarProperty Name="Logger" ColumnName="Logger" />
+            <ScalarProperty Name="Message" ColumnName="Message" />
+            <ScalarProperty Name="Exception" ColumnName="Exception" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="NLog_Error"><EntityTypeMapping TypeName="SampleDatabaseModel.NLog_Error"><MappingFragment StoreEntitySet="NLog_Error">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="time_stamp" ColumnName="time_stamp" />
+            <ScalarProperty Name="host" ColumnName="host" />
+            <ScalarProperty Name="type" ColumnName="type" />
+            <ScalarProperty Name="source" ColumnName="source" />
+            <ScalarProperty Name="message" ColumnName="message" />
+            <ScalarProperty Name="level" ColumnName="level" />
+            <ScalarProperty Name="logger" ColumnName="logger" />
+            <ScalarProperty Name="stacktrace" ColumnName="stacktrace" />
+            <ScalarProperty Name="allxml" ColumnName="allxml" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="MvcLoggingDemo">
+        <EntityTypeShape EntityType="SampleDatabaseModel.aspnet_WebEvent_Events" Width="1.5" PointX="0.75" PointY="0.75" Height="3.9033007812499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SampleDatabaseModel.ELMAH_Error" Width="1.5" PointX="2.75" PointY="0.75" Height="3.1340950520833326" IsExpanded="true" />
+        <EntityTypeShape EntityType="SampleDatabaseModel.Log4Net_Error" Width="1.5" PointX="4.75" PointY="0.75" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="SampleDatabaseModel.NLog_Error" Width="1.5" PointX="2.75" PointY="4.75" Height="2.9417936197916656" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
