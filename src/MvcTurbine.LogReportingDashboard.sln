@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcTurbine.LogReportingDashboard", "MvcTurbine.LogReportingDashboard\MvcTurbine.LogReportingDashboard.csproj", "{241D1E7D-E302-436B-91F6-E548D6B0CF77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApplication", "SampleApplication\SampleApplication.csproj", "{336AEA91-445E-4E37-B5E2-EF5322AED635}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{241D1E7D-E302-436B-91F6-E548D6B0CF77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241D1E7D-E302-436B-91F6-E548D6B0CF77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241D1E7D-E302-436B-91F6-E548D6B0CF77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241D1E7D-E302-436B-91F6-E548D6B0CF77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{336AEA91-445E-4E37-B5E2-EF5322AED635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{336AEA91-445E-4E37-B5E2-EF5322AED635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{336AEA91-445E-4E37-B5E2-EF5322AED635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{336AEA91-445E-4E37-B5E2-EF5322AED635}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
