@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<MvcTurbine.LogReportingDashboard.Models.LogEvent>" %>
+<%@ Import Namespace="MvcTurbine.LogReportingDashboard.Helpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Details
@@ -49,7 +50,7 @@
     <% =FormsHelper.OutputXmlTableForLogging(Model.AllXml) %>
 
     <p>        
-        <%: Html.ActionLink("Back to List", "Index") %>
+        <%= Html.ActionLink("Back to List", "Index") %>
     </p>
 
 </asp:Content>

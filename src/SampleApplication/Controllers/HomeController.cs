@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using MvcTurbine.LogReportingDashboard.Services.Logging;
 
@@ -25,7 +26,7 @@ namespace SampleApplication.Controllers
 
         public ActionResult About()
         {
-            throw new Exception("JUST TESTING");
+            throw new HttpException(404, "Action not found");
 
             return View();
         }

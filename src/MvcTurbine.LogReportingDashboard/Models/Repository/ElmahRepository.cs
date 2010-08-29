@@ -85,7 +85,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
                                                      , Source = b.Source
                                                      , StackTrace = ""
                                                      , AllXml = b.AllXml })
-                        .SingleOrDefault();
+                        .FirstOrDefault();
 
             return logEvent;
         }
