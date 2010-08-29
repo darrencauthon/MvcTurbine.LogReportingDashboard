@@ -115,7 +115,8 @@
     <Compile Include="Models\RuleViolation.cs" />
     <Compile Include="Models\WebIdentity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registration\LoggingRegistration.cs" />
+    <Compile Include="Registration\LoggerRegistration.cs" />
+    <Compile Include="Registration\MvcInternalsRegistration.cs" />
     <Compile Include="Registration\ProjectRegistration.cs" />
     <Compile Include="Services\Charting\Google\Visualization\ChartCellItem.cs" />
     <Compile Include="Services\Charting\Google\Visualization\ChartColumn.cs" />

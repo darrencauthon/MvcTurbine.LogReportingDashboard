@@ -1,19 +1,20 @@
 ﻿using System.Web.Mvc;
 using MvcTurbine.ComponentModel;
-using MvcTurbine.LogReportingDashboard.Services.Logging;
 using MvcTurbine.LogReportingDashboard.Services.Logging.Elmah;
-using MvcTurbine.LogReportingDashboard.Services.Logging.NLog;
 
 namespace MvcTurbine.LogReportingDashboard.Registration
 {
-    public class LoggingRegistration : IServiceRegistration
+    public class MvcInternalsRegistration : IServiceRegistration
     {
         public void Register(IServiceLocator locator)
         {
+            ReplaceTheControllerAndActionInvokerToErrorHandlingOnes(locator);
+        }
+
+        private static void ReplaceTheControllerAndActionInvokerToErrorHandlingOnes(IServiceLocator locator)
+        {
             locator.Register<IControllerFactory, ErrorHandlingControllerFactory>();
             locator.Register<IActionInvoker, ErrorHandlingActionInvoker>();
-
-            locator.Register<ILogger, NLogLogger>();
         }
     }
 }
