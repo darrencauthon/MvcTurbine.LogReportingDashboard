@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.EntityClient;
 using System.Linq;
 using System.Data.SqlClient;
 using MvcTurbine.LogReportingDashboard.Models.Entities;
@@ -111,7 +113,18 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
             SqlParameter paramEndDate = new SqlParameter { ParameterName = "p1", Value = end.ToUniversalTime(), DbType = System.Data.DbType.DateTime };
             SqlParameter paramLogLevelList = new SqlParameter { ParameterName = "p2", Value = logLevelList };
 
-            _context.ExecuteStoreCommand(commandText, paramStartDate, paramEndDate, paramLogLevelList);
+
+            var storeConnection = ((EntityConnection)_context.Connection).StoreConnection;
+            var command = storeConnection.CreateCommand();
+            command.CommandText = commandText;
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.Add(paramStartDate);
+            command.Parameters.Add(paramEndDate);
+            command.Parameters.Add(paramLogLevelList);
+
+            command.ExecuteNonQuery();
+
         }
 
     }
