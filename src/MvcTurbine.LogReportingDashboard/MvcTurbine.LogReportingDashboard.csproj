@@ -142,6 +142,11 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <EmbeddedResource Include="Views\Logging\Chart.aspx" />
+    <EmbeddedResource Include="Views\Logging\Details.aspx" />
+    <EmbeddedResource Include="Views\Logging\Index.aspx" />
+    <EmbeddedResource Include="Views\Logging\Manage.aspx" />
+    <EmbeddedResource Include="Views\Logging\Search.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

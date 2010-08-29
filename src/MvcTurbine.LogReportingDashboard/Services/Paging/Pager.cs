@@ -3,7 +3,7 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace MvcLoggingDemo.Services.Paging
+namespace MvcTurbine.LogReportingDashboard.Services.Paging
 {
 	public class Pager
 	{

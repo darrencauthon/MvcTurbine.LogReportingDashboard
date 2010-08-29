@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using MvcLoggingDemo.Services.Paging;
+using MvcTurbine.LogReportingDashboard.Services.Paging;
 
 namespace MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces
 {    

@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
-using MvcLoggingDemo.Services.Paging;
+using MvcTurbine.LogReportingDashboard.Services.Paging;
 using MvcTurbine.LogReportingDashboard.Models.Entities;
 using MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces;
 using MvcTurbine.LogReportingDashboard.Services.Logging;

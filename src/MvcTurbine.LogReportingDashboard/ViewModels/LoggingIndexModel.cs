@@ -1,4 +1,4 @@
-﻿using MvcLoggingDemo.Services.Paging;
+﻿using MvcTurbine.LogReportingDashboard.Services.Paging;
 using MvcTurbine.LogReportingDashboard.Models;
 
 namespace MvcTurbine.LogReportingDashboard.ViewModels

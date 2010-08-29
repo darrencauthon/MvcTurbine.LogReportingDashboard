@@ -7,13 +7,13 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging
     // <?xml version="1.0" encoding="utf-8" ?>
     // <configuration>
     //    <configSections>
-    //        <section name="logConfiguration" type="MvcLoggingDemo.Services.Logging.LogConfigurationSection" />
+    //        <section name="logConfiguration" type="MvcTurbine.LogReportingDashboard.Services.Logging.LogConfigurationSection" />
     //    </configSections>
     //    <logConfiguration>
     //        <logProviders>
     //            <clear />
-    //            <add name="Elmah" type="MvcLoggingDemo.Models.Repository.ElmahRepository" />
-    //            <add name="NLog" type="MvcLoggingDemo.Models.Repository.NLogRepository" />
+    //            <add name="Elmah" type="MvcTurbine.LogReportingDashboard.Models.Repository.ElmahRepository" />
+    //            <add name="NLog" type="MvcTurbine.LogReportingDashboard.Models.Repository.NLogRepository" />
     //        </logProviders>
     //    </logConfiguration>
     // </configuration>
@@ -167,7 +167,7 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging
             }
         }
 
-        [ConfigurationProperty("type", DefaultValue = "MvcLoggingDemo.Models.Repository.NLogRepository", IsRequired = true)]
+        [ConfigurationProperty("type", DefaultValue = "MvcTurbine.LogReportingDashboard.Models.Repository.NLogRepository", IsRequired = true)]
         public string Type
         {
             get

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MvcLoggingDemo.Services.Paging
+namespace MvcTurbine.LogReportingDashboard.Services.Paging
 {
 	public interface IPagedList<T> : IList<T>
 	{

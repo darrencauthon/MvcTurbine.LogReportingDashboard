@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MvcLoggingDemo.Services.Paging;
+using MvcTurbine.LogReportingDashboard.Services.Paging;
 using MvcTurbine.LogReportingDashboard.Helpers;
 using MvcTurbine.LogReportingDashboard.Models;
 using MvcTurbine.LogReportingDashboard.Models.Repository;

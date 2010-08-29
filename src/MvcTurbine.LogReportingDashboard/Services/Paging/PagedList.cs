@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MvcLoggingDemo.Services.Paging
+namespace MvcTurbine.LogReportingDashboard.Services.Paging
 {
 	public class PagedList<T> : List<T>, IPagedList<T>
 	{
