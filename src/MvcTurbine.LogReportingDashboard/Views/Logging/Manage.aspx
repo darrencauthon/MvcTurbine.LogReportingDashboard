@@ -8,15 +8,16 @@
 
     <h2>Manage</h2>
 
-    <%= ViewData["Message"]%>
+    <%=ViewData["Message"]%>
 
-    <% using (Html.BeginForm())
-       {%>
+    <%
+        using (Html.BeginForm())
+        {%>
 
         <fieldset>
             <legend>Fields</legend>
             
-            <%= Html.EditorForModel()%>
+            <%=Html.EditorForModel()%>
 
             <p>
                 <input type="submit" value="Clear Log" />
@@ -24,7 +25,8 @@
 
         </fieldset>
 
-    <% } %>
+    <%
+        }%>
 
 </asp:Content>
 

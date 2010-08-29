@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
 using System.Web.Mvc;
-using MvcTurbine.LogReportingDashboard.Services.Paging;
 using MvcTurbine.LogReportingDashboard.Helpers;
 using MvcTurbine.LogReportingDashboard.Models;
 using MvcTurbine.LogReportingDashboard.Models.Repository;
@@ -28,23 +26,23 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
         }
 
         /// <summary>
-        /// Returns the Index view
+        ///   Returns the Index view
         /// </summary>
-        /// <param name="Period">Text representation of the date time period. eg: Today, Yesterday, Last Week etc.</param>
-        /// <param name="LoggerProviderName">Elmah, Log4Net, NLog, Health Monitoring etc</param>
-        /// <param name="LogLevel">Debug, Info, Warning, Error, Fatal</param>
-        /// <param name="page">The current page index (0 based)</param>
-        /// <param name="PageSize">The number of records per page</param>
+        /// <param name = "Period">Text representation of the date time period. eg: Today, Yesterday, Last Week etc.</param>
+        /// <param name = "LoggerProviderName">Elmah, Log4Net, NLog, Health Monitoring etc</param>
+        /// <param name = "LogLevel">Debug, Info, Warning, Error, Fatal</param>
+        /// <param name = "page">The current page index (0 based)</param>
+        /// <param name = "PageSize">The number of records per page</param>
         /// <returns></returns>
         public ActionResult Index(string Period, string LoggerProviderName, string LogLevel, int? page, int? PageSize)
         {
             // Set up our default values
-            string defaultPeriod = Session["Period"] == null ? "Today" : Session["Period"].ToString();
-            string defaultLogType = Session["LoggerProviderName"] == null ? "All" : Session["LoggerProviderName"].ToString();
-            string defaultLogLevel = Session["LogLevel"] == null ? "Error" : Session["LogLevel"].ToString();
+            var defaultPeriod = Session["Period"] == null ? "Today" : Session["Period"].ToString();
+            var defaultLogType = Session["LoggerProviderName"] == null ? "All" : Session["LoggerProviderName"].ToString();
+            var defaultLogLevel = Session["LogLevel"] == null ? "Error" : Session["LogLevel"].ToString();
 
             // Set up our view model
-            LoggingIndexModel model = new LoggingIndexModel();
+            var model = new LoggingIndexModel();
 
             model.Period = (Period == null) ? defaultPeriod : Period;
             model.LoggerProviderName = (LoggerProviderName == null) ? defaultLogType : LoggerProviderName;
@@ -52,7 +50,7 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
             model.CurrentPageIndex = page.HasValue ? page.Value - 1 : 0;
             model.PageSize = PageSize.HasValue ? PageSize.Value : 20;
 
-            TimePeriod timePeriod = TimePeriodHelper.GetUtcTimePeriod(model.Period);
+            var timePeriod = TimePeriodHelper.GetUtcTimePeriod(model.Period);
 
             // Grab the data from the database
             model.LogEvents = loggingRepository.GetByDateRangeAndType(model.CurrentPageIndex, model.PageSize, timePeriod.Start, timePeriod.End, model.LoggerProviderName, model.LogLevel);
@@ -76,7 +74,7 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
 
         public ActionResult Details(string loggerProviderName, string id)
         {
-            LogEvent logEvent = loggingRepository.GetById(loggerProviderName, id);
+            var logEvent = loggingRepository.GetById(loggerProviderName, id);
 
             return View(logEvent);
         }
@@ -88,11 +86,10 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="Period"></param>
-        /// <param name="LoggerProviderName"></param>
-        /// <param name="LogLevel"></param>
+        /// <param name = "Period"></param>
+        /// <param name = "LoggerProviderName"></param>
+        /// <param name = "LogLevel"></param>
         /// <returns></returns>
         public JsonResult ChartData(string Period, string LoggerProviderName, string LogLevel)
         {
@@ -107,11 +104,10 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="Period"></param>
-        /// <param name="LoggerProviderName"></param>
-        /// <param name="logLevel"></param>
+        /// <param name = "Period"></param>
+        /// <param name = "LoggerProviderName"></param>
+        /// <param name = "logLevel"></param>
         /// <returns></returns>
         public JsonResult ChartDataByHour(string Period, string LoggerProviderName, string logLevel)
         {
@@ -121,11 +117,10 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="Period"></param>
-        /// <param name="LoggerProviderName"></param>
-        /// <param name="logLevel"></param>
+        /// <param name = "Period"></param>
+        /// <param name = "LoggerProviderName"></param>
+        /// <param name = "logLevel"></param>
         /// <returns></returns>
         public JsonResult ChartDataByDay(string Period, string LoggerProviderName, string logLevel)
         {
@@ -135,54 +130,53 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="Period"></param>
-        /// <param name="LoggerProviderName"></param>
-        /// <param name="logLevel"></param>
-        /// <param name="keyFormatString"></param>
-        /// <param name="groupByClause"></param>
+        /// <param name = "Period"></param>
+        /// <param name = "LoggerProviderName"></param>
+        /// <param name = "logLevel"></param>
+        /// <param name = "keyFormatString"></param>
+        /// <param name = "groupByClause"></param>
         /// <returns></returns>
         public JsonResult ChartDataByTimePeriod(string Period, string LoggerProviderName, string logLevel, string keyFormatString, Func<LogEvent, Object> groupByClause)
         {
-            TimePeriod timePeriod = TimePeriodHelper.GetUtcTimePeriod(Period);
+            var timePeriod = TimePeriodHelper.GetUtcTimePeriod(Period);
 
             // Grab ALL entries for the chart (DO NOT PAGE REPORTING DATA!!!)
-            IPagedList<LogEvent> chartEntries = loggingRepository.GetByDateRangeAndType(0, Int32.MaxValue, timePeriod.Start, timePeriod.End, LoggerProviderName, logLevel);
+            var chartEntries = loggingRepository.GetByDateRangeAndType(0, Int32.MaxValue, timePeriod.Start, timePeriod.End, LoggerProviderName, logLevel);
 
             var groupedByDate = chartEntries.GroupBy(groupByClause).OrderBy(y => y.Key);
 
-            var groupedByDateAndThenName = groupedByDate.Select(group => new { Key = group.Key, NestedGroup = group.ToLookup(result => result.LoggerProviderName, result => result.Id) });
+            var groupedByDateAndThenName = groupedByDate.Select(group => new {group.Key, NestedGroup = group.ToLookup(result => result.LoggerProviderName, result => result.Id)});
 
             var LoggerNames = (from logEvent in chartEntries
-                               select new { Name = logEvent.LoggerProviderName }
-                               ).Distinct().OrderBy(item => item.Name);
+                               select new {Name = logEvent.LoggerProviderName}
+                              ).Distinct().OrderBy(item => item.Name);
 
-            ChartData chartData = new ChartData();
+            var chartData = new ChartData();
 
             // Add columns
             chartData.AddColumn(new ChartColumn("0", "Period", "string"));
-            int columnIndex = 1;
+            var columnIndex = 1;
             foreach (var name in LoggerNames)
             {
-                chartData.AddColumn(new ChartColumn(columnIndex.ToString(), name.Name.ToString(), "number"));
+                chartData.AddColumn(new ChartColumn(columnIndex.ToString(), name.Name, "number"));
                 columnIndex++;
             }
 
             // add row data
             foreach (var myDate in groupedByDateAndThenName)
             {
-                ChartRow row = new ChartRow();
+                var row = new ChartRow();
 
-                string dateString = (myDate.Key is DateTime) ? ((DateTime)myDate.Key).ToString(keyFormatString) : myDate.Key.ToString();
+                var dateString = (myDate.Key is DateTime) ? ((DateTime) myDate.Key).ToString(keyFormatString) : myDate.Key.ToString();
                 row.AddCellItem(new ChartCellItem(dateString, ""));
 
                 foreach (var name in LoggerNames)
                 {
-                    bool valueFound = false;
+                    var valueFound = false;
                     foreach (var myLogger in myDate.NestedGroup)
                     {
-                        if (myLogger.Key == name.Name.ToString())
+                        if (myLogger.Key == name.Name)
                         {
                             row.AddCellItem(new ChartCellItem(myLogger.Count(), ""));
                             valueFound = true;
@@ -194,23 +188,23 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
                 chartData.AddRow(row);
             }
 
-            return Json(chartData, "text/x-json", System.Text.Encoding.UTF8, JsonRequestBehavior.AllowGet);
+            return Json(chartData, "text/x-json", Encoding.UTF8, JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>
-        /// Gets the chart
+        ///   Gets the chart
         /// </summary>
-        /// <param name="Period"></param>
-        /// <param name="LoggerProviderName"></param>
-        /// <param name="LogLevel"></param>
+        /// <param name = "Period"></param>
+        /// <param name = "LoggerProviderName"></param>
+        /// <param name = "LogLevel"></param>
         /// <returns></returns>
         public ActionResult Chart(string Period, string LoggerProviderName, string LogLevel)
         {
-            string defaultPeriod = Session["Period"] == null ? "Today" : Session["Period"].ToString();
-            string defaultLoggerProviderName = Session["LoggerProviderName"] == null ? "All" : Session["LoggerProviderName"].ToString();
-            string defaultLogLevel = Session["LogLevel"] == null ? "Error" : Session["LogLevel"].ToString();
+            var defaultPeriod = Session["Period"] == null ? "Today" : Session["Period"].ToString();
+            var defaultLoggerProviderName = Session["LoggerProviderName"] == null ? "All" : Session["LoggerProviderName"].ToString();
+            var defaultLogLevel = Session["LogLevel"] == null ? "Error" : Session["LogLevel"].ToString();
 
-            LoggingIndexModel model = new LoggingIndexModel();
+            var model = new LoggingIndexModel();
 
             model.Period = (Period == null) ? defaultPeriod : Period;
             model.LoggerProviderName = (LoggerProviderName == null) ? defaultLoggerProviderName : LoggerProviderName;
@@ -224,7 +218,7 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
 
         public ActionResult Manage()
         {
-            LoggingManageModel model = new LoggingManageModel();
+            var model = new LoggingManageModel();
 
             return View(model);
         }
@@ -237,7 +231,7 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
         {
             try
             {
-                string[] logLevels = new string[] { "Warn" };
+                var logLevels = new[] {"Warn"};
                 loggingRepository.ClearLog(model.LogSourceName, model.StartDate, model.EndDate, logLevels);
 
                 ViewData["Message"] = "The log has been cleared";

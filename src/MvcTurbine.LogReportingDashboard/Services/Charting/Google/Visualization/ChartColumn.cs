@@ -3,17 +3,17 @@
     public class ChartColumn
     {
         /// <summary>
-        /// Id
+        ///   Id
         /// </summary>
         public string id { get; set; }
 
         /// <summary>
-        /// Label
+        ///   Label
         /// </summary>
         public string label { get; set; }
 
         /// <summary>
-        /// Type
+        ///   Type
         /// </summary>
         public string type { get; set; }
 

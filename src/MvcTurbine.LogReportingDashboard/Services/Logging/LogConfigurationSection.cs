@@ -2,7 +2,7 @@
 using System.Configuration;
 
 namespace MvcTurbine.LogReportingDashboard.Services.Logging
-{            
+{
     // Use the following web.config file.
     // <?xml version="1.0" encoding="utf-8" ?>
     // <configuration>
@@ -31,7 +31,7 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging
         // .NET Framework to build a nested section of 
         // the kind <logProviders>...</logProviders>.
         [ConfigurationProperty("logProviders", IsDefaultCollection = false)]
-        [ConfigurationCollection(typeof(LogProviderCollection),
+        [ConfigurationCollection(typeof (LogProviderCollection),
             AddItemName = "add",
             ClearItemsName = "clear",
             RemoveItemName = "remove")]
@@ -39,11 +39,10 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging
         {
             get
             {
-                LogProviderCollection logProvidersCollection = (LogProviderCollection)base["logProviders"];
+                var logProvidersCollection = (LogProviderCollection) base["logProviders"];
                 return logProvidersCollection;
             }
         }
-
     }
 
     // Define the UrlsCollection that will contain the UrlsConfigElement
@@ -57,16 +56,13 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging
             // here only to illustrate what can be done; you could 
             // also create additional elements with other hard-coded 
             // values here.)
-            LogProviderConfigElement element = (LogProviderConfigElement)CreateNewElement();
+            var element = (LogProviderConfigElement) CreateNewElement();
             Add(element);
         }
 
         public override ConfigurationElementCollectionType CollectionType
         {
-            get
-            {
-                return ConfigurationElementCollectionType.AddRemoveClearMap;
-            }
+            get { return ConfigurationElementCollectionType.AddRemoveClearMap; }
         }
 
         protected override ConfigurationElement CreateNewElement()
@@ -76,15 +72,12 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging
 
         protected override Object GetElementKey(ConfigurationElement element)
         {
-            return ((LogProviderConfigElement)element).Name;
+            return ((LogProviderConfigElement) element).Name;
         }
 
         public LogProviderConfigElement this[int index]
         {
-            get
-            {
-                return (LogProviderConfigElement)BaseGet(index);
-            }
+            get { return (LogProviderConfigElement) BaseGet(index); }
             set
             {
                 if (BaseGet(index) != null)
@@ -95,12 +88,9 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging
             }
         }
 
-        new public LogProviderConfigElement this[string Name]
+        public new LogProviderConfigElement this[string Name]
         {
-            get
-            {
-                return (LogProviderConfigElement)BaseGet(Name);
-            }
+            get { return (LogProviderConfigElement) BaseGet(Name); }
         }
 
         public int IndexOf(LogProviderConfigElement url)
@@ -112,6 +102,7 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging
         {
             BaseAdd(url);
         }
+
         protected override void BaseAdd(ConfigurationElement element)
         {
             BaseAdd(element, false);
@@ -145,8 +136,8 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging
     {
         public LogProviderConfigElement(String name, String type)
         {
-            this.Name = name;
-            this.Type = type;
+            Name = name;
+            Type = type;
         }
 
         public LogProviderConfigElement()
@@ -157,29 +148,15 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging
         [ConfigurationProperty("name", DefaultValue = "NLog", IsRequired = true, IsKey = true)]
         public string Name
         {
-            get
-            {
-                return (string)this["name"];
-            }
-            set
-            {
-                this["name"] = value;
-            }
+            get { return (string) this["name"]; }
+            set { this["name"] = value; }
         }
 
         [ConfigurationProperty("type", DefaultValue = "MvcTurbine.LogReportingDashboard.Models.Repository.NLogRepository", IsRequired = true)]
         public string Type
         {
-            get
-            {
-                return (string)this["type"];
-            }
-            set
-            {
-                this["type"] = value;
-            }
+            get { return (string) this["type"]; }
+            set { this["type"] = value; }
         }
-
     }
-
 }

@@ -3,12 +3,12 @@
     public class ChartCellItem
     {
         /// <summary>
-        /// Value
+        ///   Value
         /// </summary>
         public object v { get; set; }
 
         /// <summary>
-        /// Format
+        ///   Format
         /// </summary>
         public string f { get; set; }
 

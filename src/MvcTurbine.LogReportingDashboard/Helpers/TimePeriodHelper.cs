@@ -3,7 +3,7 @@
 namespace MvcTurbine.LogReportingDashboard.Helpers
 {
     /// <summary>
-    /// A utility class to keep track of a start and an end date
+    ///   A utility class to keep track of a start and an end date
     /// </summary>
     public class TimePeriod
     {
@@ -11,7 +11,7 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
         public DateTime End { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///   Constructor
         /// </summary>
         public TimePeriod()
         {
@@ -21,19 +21,18 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
     }
 
     /// <summary>
-    /// This helper class provides a quick way to get common time periods like 'Today', 'Yesterday'
+    ///   This helper class provides a quick way to get common time periods like 'Today', 'Yesterday'
     /// </summary>
     public static class TimePeriodHelper
     {
-
         /// <summary>
-        /// This methods provides a quick way to get a Time Period in Universal Time
+        ///   This methods provides a quick way to get a Time Period in Universal Time
         /// </summary>
-        /// <param name="period">The string based name of a period. Eg. Today, Tomorrow</param>
+        /// <param name = "period">The string based name of a period. Eg. Today, Tomorrow</param>
         /// <returns>A time period</returns>
         public static TimePeriod GetUtcTimePeriod(string period)
         {
-            TimePeriod timePeriod = GetTimePeriod(period);
+            var timePeriod = GetTimePeriod(period);
 
             timePeriod.Start = timePeriod.Start.ToUniversalTime();
             timePeriod.End = timePeriod.End.ToUniversalTime();
@@ -42,13 +41,13 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
         }
 
         /// <summary>
-        /// This methods provides a quick way to get a Time Period
+        ///   This methods provides a quick way to get a Time Period
         /// </summary>
-        /// <param name="period">The string based name of a period. Eg. Today, Tomorrow</param>
+        /// <param name = "period">The string based name of a period. Eg. Today, Tomorrow</param>
         /// <returns>A time period</returns>
         public static TimePeriod GetTimePeriod(string period)
         {
-            TimePeriod timePeriod = new TimePeriod();                        
+            var timePeriod = new TimePeriod();
 
             switch (period)
             {
@@ -105,6 +104,5 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
 
             return timePeriod;
         }
-
     }
 }

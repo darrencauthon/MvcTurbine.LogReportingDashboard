@@ -5,8 +5,7 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging.NLog
 {
     public class NLogLogger : ILogger
     {
-
-        private Logger _logger;
+        private readonly Logger _logger;
 
         public NLogLogger()
         {
@@ -30,7 +29,7 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging.NLog
 
         public void Error(string message)
         {
-            _logger.Error(message);            
+            _logger.Error(message);
         }
 
         public void Error(Exception x)

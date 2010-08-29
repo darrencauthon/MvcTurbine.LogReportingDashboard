@@ -1,12 +1,11 @@
 ﻿namespace MvcTurbine.LogReportingDashboard.Models
 {
     /// <summary>
-    /// Credits : This class is from the NerdDinner sample application
+    ///   Credits : This class is from the NerdDinner sample application
     /// </summary>
-    /// <see cref="http://www.nerddinner.com/"/>
+    /// <see cref = "http://www.nerddinner.com/" />
     public class RuleViolation
     {
-
         public string ErrorMessage { get; private set; }
         public string PropertyName { get; private set; }
 

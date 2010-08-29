@@ -6,17 +6,17 @@ using MvcTurbine.Web.Controllers;
 namespace MvcTurbine.LogReportingDashboard.Services.Logging.Elmah
 {
     /// <summary>
-    /// This class allows an Exception filter to be injected when an MVC action is invoked
+    ///   This class allows an Exception filter to be injected when an MVC action is invoked
     /// </summary>
     public class ErrorHandlingActionInvoker : TurbineActionInvoker
     {
         private readonly IExceptionFilter filter;
 
         /// <summary>
-        /// Constructor
+        ///   Constructor
         /// </summary>
-        /// <param name="filter">The exception filter to inject</param>
-        public ErrorHandlingActionInvoker(IServiceLocator serviceLocator, IExceptionFilter filter) 
+        /// <param name = "filter">The exception filter to inject</param>
+        public ErrorHandlingActionInvoker(IServiceLocator serviceLocator, IExceptionFilter filter)
             : base(serviceLocator)
         {
             if (filter == null)
@@ -28,11 +28,11 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging.Elmah
         }
 
         /// <summary>
-        /// This methods returns all of the normal filters used
-        /// PLUS it appends our custom filter to the end of the list 
+        ///   This methods returns all of the normal filters used
+        ///   PLUS it appends our custom filter to the end of the list
         /// </summary>
-        /// <param name="controllerContext">The context of the controller</param>
-        /// <param name="actionDescriptor">The action descriptor</param>
+        /// <param name = "controllerContext">The context of the controller</param>
+        /// <param name = "actionDescriptor">The action descriptor</param>
         /// <returns>All of the action filters</returns>
         protected override FilterInfo GetFilters(
             ControllerContext controllerContext,
@@ -40,9 +40,9 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging.Elmah
         {
             var filterInfo =
                 base.GetFilters(controllerContext,
-                actionDescriptor);
+                                actionDescriptor);
 
-            filterInfo.ExceptionFilters.Add(this.filter);
+            filterInfo.ExceptionFilters.Add(filter);
 
             return filterInfo;
         }

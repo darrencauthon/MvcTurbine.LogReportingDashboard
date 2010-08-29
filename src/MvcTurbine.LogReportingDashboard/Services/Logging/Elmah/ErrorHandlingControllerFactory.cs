@@ -40,7 +40,7 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging.Elmah
             {
                 c.ActionInvoker =
                     new ErrorHandlingActionInvoker(serviceLocator,
-                        new HandleErrorWithELMAHAttribute());
+                                                   new HandleErrorWithELMAHAttribute());
             }
 
             return controller;

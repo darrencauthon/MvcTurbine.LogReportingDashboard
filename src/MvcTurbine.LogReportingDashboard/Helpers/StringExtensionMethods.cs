@@ -5,16 +5,15 @@ using System.Text;
 namespace MvcTurbine.LogReportingDashboard.Helpers
 {
     /// <summary>
-    /// Source:
-    /// http://blog.csharphelper.com/2010/06/13/convert-strings-between-pascal-case-camel-case-and-proper-case-in-c.aspx
+    ///   Source:
+    ///   http://blog.csharphelper.com/2010/06/13/convert-strings-between-pascal-case-camel-case-and-proper-case-in-c.aspx
     /// </summary>
     public static class StringExtensionMethods
     {
-        
         /// <summary>
-        /// Convert the string to Pascal case.
+        ///   Convert the string to Pascal case.
         /// </summary>
-        /// <param name="the_string">the string to turn into Pascal case</param>
+        /// <param name = "the_string">the string to turn into Pascal case</param>
         /// <returns>a string formatted as Pascal case</returns>
         public static string ToPascalCase(this string the_string)
         {
@@ -23,13 +22,13 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
             if (the_string.Length < 2) return the_string.ToUpper();
 
             // Split the string into words.
-            string[] words = the_string.Split(
-                new char[] { },
+            var words = the_string.Split(
+                new char[] {},
                 StringSplitOptions.RemoveEmptyEntries);
 
             // Combine the words.
-            string result = "";
-            foreach (string word in words)
+            var result = "";
+            foreach (var word in words)
             {
                 result +=
                     word.Substring(0, 1).ToUpper() +
@@ -38,11 +37,11 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
 
             return result;
         }
-        
+
         /// <summary>
-        /// Convert the string to camel case.
+        ///   Convert the string to camel case.
         /// </summary>
-        /// <param name="the_string">the string to turn into Camel case</param>
+        /// <param name = "the_string">the string to turn into Camel case</param>
         /// <returns>a string formatted as Camel case</returns>
         public static string ToCamelCase(this string the_string)
         {
@@ -50,13 +49,13 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
             if (the_string == null || the_string.Length < 2) return the_string;
 
             // Split the string into words.
-            string[] words = the_string.Split(
-                new char[] { },
+            var words = the_string.Split(
+                new char[] {},
                 StringSplitOptions.RemoveEmptyEntries);
 
             // Combine the words.
-            string result = words[0].ToLower();
-            for (int i = 1; i < words.Length; i++)
+            var result = words[0].ToLower();
+            for (var i = 1; i < words.Length; i++)
             {
                 result +=
                     words[i].Substring(0, 1).ToUpper() +
@@ -67,10 +66,10 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
         }
 
         /// <summary>
-        /// Capitalize the first character and add a space before 
-        /// each capitalized letter (except the first character). 
+        ///   Capitalize the first character and add a space before 
+        ///   each capitalized letter (except the first character).
         /// </summary>
-        /// <param name="the_string">the string to turn into Proper case</param>
+        /// <param name = "the_string">the string to turn into Proper case</param>
         /// <returns>a string formatted as Proper case</returns>
         public static string ToProperCase(this string the_string)
         {
@@ -79,10 +78,10 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
             if (the_string.Length < 2) return the_string.ToUpper();
 
             // Start with the first character.
-            string result = the_string.Substring(0, 1).ToUpper();
+            var result = the_string.Substring(0, 1).ToUpper();
 
             // Add the remaining characters.
-            for (int i = 1; i < the_string.Length; i++)
+            for (var i = 1; i < the_string.Length; i++)
             {
                 if (Char.IsUpper(the_string[i])) result += " ";
                 result += the_string[i];
@@ -94,17 +93,17 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
         private const string _newline = "\r\n";
 
         /// <summary>
-        /// Word wraps the given text to fit within the specified width.
+        ///   Word wraps the given text to fit within the specified width.
         /// </summary>
-        /// <param name="text">Text to be word wrapped</param>
-        /// <param name="width">Width, in characters, to which the text
-        /// should be word wrapped</param>
+        /// <param name = "text">Text to be word wrapped</param>
+        /// <param name = "width">Width, in characters, to which the text
+        ///   should be word wrapped</param>
         /// <returns>The modified text</returns>
-        /// <see cref="http://www.softcircuits.com/Blog/post/2010/01/10/Implementing-Word-Wrap-in-C.aspx"/>
+        /// <see cref = "http://www.softcircuits.com/Blog/post/2010/01/10/Implementing-Word-Wrap-in-C.aspx" />
         public static string WordWrap(this string the_string, int width)
         {
             int pos, next;
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             // Lucidity check
             if (width < 1)
@@ -114,7 +113,7 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
             for (pos = 0; pos < the_string.Length; pos = next)
             {
                 // Find end of line
-                int eol = the_string.IndexOf(_newline, pos);
+                var eol = the_string.IndexOf(_newline, pos);
 
                 if (eol == -1)
                     next = eol = the_string.Length;
@@ -126,7 +125,7 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
                 {
                     do
                     {
-                        int len = eol - pos;
+                        var len = eol - pos;
 
                         if (len > width)
                             len = BreakLine(the_string, pos, width);
@@ -139,7 +138,6 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
 
                         while (pos < eol && Char.IsWhiteSpace(the_string[pos]))
                             pos++;
-
                     } while (eol > pos);
                 }
                 else sb.Append(_newline); // Empty line
@@ -149,17 +147,17 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
         }
 
         /// <summary>
-        /// Locates position to break the given line so as to avoid
-        /// breaking words.
+        ///   Locates position to break the given line so as to avoid
+        ///   breaking words.
         /// </summary>
-        /// <param name="text">String that contains line of text</param>
-        /// <param name="pos">Index where line of text starts</param>
-        /// <param name="max">Maximum line length</param>
+        /// <param name = "text">String that contains line of text</param>
+        /// <param name = "pos">Index where line of text starts</param>
+        /// <param name = "max">Maximum line length</param>
         /// <returns>The modified line length</returns>
         public static int BreakLine(string text, int pos, int max)
         {
             // Find last whitespace in line
-            int i = max - 1;
+            var i = max - 1;
 
             while (i >= 0 && !Char.IsWhiteSpace(text[pos + i]))
                 i--;
@@ -176,16 +174,16 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
         }
 
         /// <summary>
-        /// Returns part of a string up to the specified number of characters, while maintaining full words
+        ///   Returns part of a string up to the specified number of characters, while maintaining full words
         /// </summary>
-        /// <param name="s"></param>
-        /// <param name="length">Maximum characters to be returned</param>
+        /// <param name = "s"></param>
+        /// <param name = "length">Maximum characters to be returned</param>
         /// <returns>String</returns>
         public static string Chop(this string s, int length)
         {
             if (String.IsNullOrEmpty(s))
                 throw new ArgumentNullException(s);
-            var words = s.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var words = s.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
             var sb = new StringBuilder();
 
             foreach (var word in words.Where(word => (sb.ToString().Length + word.Length) <= length))
@@ -194,6 +192,5 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
             }
             return sb.ToString().TrimEnd(' ') + "...";
         }
-
     }
 }

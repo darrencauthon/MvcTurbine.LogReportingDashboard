@@ -14,9 +14,5 @@ namespace MvcTurbine.LogReportingDashboard.ViewModels
         public string LogSourceName { get; set; }
 
         public string LogLevels { get; set; }
-
-        public LoggingManageModel()
-        {            
-        }        
     }
 }

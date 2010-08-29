@@ -13,9 +13,9 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging.Elmah
             base.OnException(context);
 
             var e = context.Exception;
-            if (!context.ExceptionHandled   // if unhandled, will be logged anyhow
-                    || RaiseErrorSignal(e)      // prefer signaling, if possible
-                    || IsFiltered(context))     // filtered?
+            if (!context.ExceptionHandled // if unhandled, will be logged anyhow
+                || RaiseErrorSignal(e) // prefer signaling, if possible
+                || IsFiltered(context)) // filtered?
                 return;
 
             LogException(e);
@@ -36,13 +36,13 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging.Elmah
         private static bool IsFiltered(ExceptionContext context)
         {
             var config = context.HttpContext.GetSection("elmah/errorFilter")
-                                     as ErrorFilterConfiguration;
+                         as ErrorFilterConfiguration;
 
             if (config == null)
                 return false;
 
             var testContext = new ErrorFilterModule.AssertionHelperContext(
-                                                                context.Exception, HttpContext.Current);
+                context.Exception, HttpContext.Current);
 
             return config.Assertion.Test(testContext);
         }
@@ -50,7 +50,7 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging.Elmah
         private static void LogException(Exception e)
         {
             var context = HttpContext.Current;
-            ErrorLog.GetDefault(context).Log(new Error(e, context));            
+            ErrorLog.GetDefault(context).Log(new Error(e, context));
         }
     }
 }

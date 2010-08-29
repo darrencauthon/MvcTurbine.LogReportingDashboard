@@ -5,12 +5,11 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging.Log4Net
 {
     public class Log4NetLogger : ILogger
     {
-
-        private ILog _logger;
+        private readonly ILog _logger;
 
         public Log4NetLogger()
         {
-            _logger = LogManager.GetLogger(this.GetType());
+            _logger = LogManager.GetLogger(GetType());
         }
 
         public void Info(string message)
@@ -30,7 +29,7 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging.Log4Net
 
         public void Error(string message)
         {
-            _logger.Error(message);            
+            _logger.Error(message);
         }
 
         public void Error(Exception x)

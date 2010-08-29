@@ -4,13 +4,13 @@ namespace MvcTurbine.LogReportingDashboard.Services.Charting.Google.Visualizatio
 {
     public class ChartRow
     {
-        private ArrayList _cellItems = new ArrayList();
+        private readonly ArrayList _cellItems = new ArrayList();
 
         public ChartCellItem[] c
         {
             get
             {
-                ChartCellItem[] myCellItems = (ChartCellItem[])_cellItems.ToArray(typeof(ChartCellItem));
+                var myCellItems = (ChartCellItem[]) _cellItems.ToArray(typeof (ChartCellItem));
                 return myCellItems;
             }
         }
@@ -19,6 +19,5 @@ namespace MvcTurbine.LogReportingDashboard.Services.Charting.Google.Visualizatio
         {
             _cellItems.Add(cellItem);
         }
-
     }
 }

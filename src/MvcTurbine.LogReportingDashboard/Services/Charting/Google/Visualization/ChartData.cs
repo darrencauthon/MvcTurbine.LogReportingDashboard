@@ -4,29 +4,29 @@ namespace MvcTurbine.LogReportingDashboard.Services.Charting.Google.Visualizatio
 {
     public class ChartData
     {
-        private ArrayList _cols = new ArrayList();
-        private ArrayList _rows = new ArrayList();
+        private readonly ArrayList _cols = new ArrayList();
+        private readonly ArrayList _rows = new ArrayList();
 
         /// <summary>
-        /// An array of columns
+        ///   An array of columns
         /// </summary>
         public ChartColumn[] cols
         {
             get
             {
-                ChartColumn[] myCols = (ChartColumn[])_cols.ToArray(typeof(ChartColumn));
+                var myCols = (ChartColumn[]) _cols.ToArray(typeof (ChartColumn));
                 return myCols;
             }
         }
 
         /// <summary>
-        /// An array of rows
+        ///   An array of rows
         /// </summary>
         public ChartRow[] rows
         {
             get
             {
-                ChartRow[] myRows = (ChartRow[])_rows.ToArray(typeof(ChartRow));
+                var myRows = (ChartRow[]) _rows.ToArray(typeof (ChartRow));
                 return myRows;
             }
         }
@@ -40,6 +40,5 @@ namespace MvcTurbine.LogReportingDashboard.Services.Charting.Google.Visualizatio
         {
             _rows.Add(row);
         }
-
     }
 }

@@ -5,7 +5,7 @@ namespace MvcTurbine.LogReportingDashboard.Models
 {
     public class WebIdentity : IIdentity
     {
-        private FormsAuthenticationTicket ticket;
+        private readonly FormsAuthenticationTicket ticket;
 
         public WebIdentity(FormsAuthenticationTicket ticket)
         {
@@ -31,6 +31,5 @@ namespace MvcTurbine.LogReportingDashboard.Models
         {
             get { return ticket.UserData; }
         }
-
     }
 }

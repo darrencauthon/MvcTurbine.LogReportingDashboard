@@ -1,5 +1,5 @@
-﻿using MvcTurbine.LogReportingDashboard.Services.Paging;
-using MvcTurbine.LogReportingDashboard.Models;
+﻿using MvcTurbine.LogReportingDashboard.Models;
+using MvcTurbine.LogReportingDashboard.Services.Paging;
 
 namespace MvcTurbine.LogReportingDashboard.ViewModels
 {
@@ -18,6 +18,6 @@ namespace MvcTurbine.LogReportingDashboard.ViewModels
         {
             CurrentPageIndex = 0;
             PageSize = 20;
-        }        
+        }
     }
 }

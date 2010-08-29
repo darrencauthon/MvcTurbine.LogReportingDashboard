@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<MvcTurbine.LogReportingDashboard.ViewModels.LoggingIndexModel>" %>
+<%@ Import Namespace="MvcTurbine.LogReportingDashboard.Helpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Chart
@@ -8,24 +9,25 @@
 
     <h2>Chart</h2>
 
-    <% using (Html.BeginForm("Chart", "Logging", FormMethod.Get, new { id = "myform" }))
-       {%>
+    <%
+        using (Html.BeginForm("Chart", "Logging", FormMethod.Get, new {id = "myform"}))
+        {%>
 
     <div class="grid-options">
         View : 
-        <%= Html.ActionLink("List", "Index")%>
+        <%=Html.ActionLink("List", "Index")%>
         | <strong>Chart</strong>
-        | <%= Html.ActionLink("RSS", "RssFeed", new { LoggerProviderName = Model.LoggerProviderName, Period = Model.Period, LogLevel = Model.LogLevel }, new { target = "_blank" })%>        
+        | <%=Html.ActionLink("RSS", "RssFeed", new {Model.LoggerProviderName, Model.Period, Model.LogLevel}, new {target = "_blank"})%>        
     </div>  
 
     <div class="grid-filter">        
         <div class="inner">
 
-        Logger : <%= Html.DropDownList("LoggerProviderName", new SelectList(MvcTurbine.LogReportingDashboard.Helpers.FormsHelper.LogProviderNames, "Value", "Text"))%>  
+        Logger : <%=Html.DropDownList("LoggerProviderName", new SelectList(FormsHelper.LogProviderNames, "Value", "Text"))%>  
 
-        Level : <%= Html.DropDownList("LogLevel", new SelectList(MvcTurbine.LogReportingDashboard.Helpers.FormsHelper.LogLevels, "Value", "Text"))%>  
+        Level : <%=Html.DropDownList("LogLevel", new SelectList(FormsHelper.LogLevels, "Value", "Text"))%>  
 
-        For : <%= Html.DropDownList("Period", new SelectList(MvcTurbine.LogReportingDashboard.Helpers.FormsHelper.CommonTimePeriods, "Value", "Text"))%>  
+        For : <%=Html.DropDownList("Period", new SelectList(FormsHelper.CommonTimePeriods, "Value", "Text"))%>  
         
         <input id="btnGo" name="btnGo" type="submit" value="Apply Filter" />                      
 
@@ -33,7 +35,8 @@
     </div>
 
 
-    <% } %>
+    <%
+        }%>
 
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 

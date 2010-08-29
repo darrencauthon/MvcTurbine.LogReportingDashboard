@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+<%@ Import Namespace="MvcTurbine.LogReportingDashboard.Helpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Search
@@ -23,16 +24,16 @@
         <table>
             <tr>
                 <td>Logger</td>
-                <td><%= Html.DropDownList("LoggerProviderName", new SelectList(MvcTurbine.LogReportingDashboard.Helpers.FormsHelper.LogProviderNames, "Value", "Text"))%> </td>
+                <td><%=Html.DropDownList("LoggerProviderName", new SelectList(FormsHelper.LogProviderNames, "Value", "Text"))%> </td>
             </tr>
             <tr>
                 <td>Level</td>
-                <td><%= Html.DropDownList("LogLevel", new SelectList(MvcTurbine.LogReportingDashboard.Helpers.FormsHelper.LogLevels, "Value", "Text"))%>  </td>
+                <td><%=Html.DropDownList("LogLevel", new SelectList(FormsHelper.LogLevels, "Value", "Text"))%>  </td>
             </tr>
             <tr>
                 <td>For</td>
                 <td>
-                    <input type="radio" id="dateOption1" name="dateoption" /> <%= Html.DropDownList("Period", new SelectList(MvcTurbine.LogReportingDashboard.Helpers.FormsHelper.CommonTimePeriods, "Value", "Text"))%>                    
+                    <input type="radio" id="dateOption1" name="dateoption" /> <%=Html.DropDownList("Period", new SelectList(FormsHelper.CommonTimePeriods, "Value", "Text"))%>                    
                 </td>
             </tr>
             <tr>
