@@ -61,6 +61,7 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq">
@@ -127,12 +128,10 @@
     <Compile Include="Services\Paging\Pager.cs" />
     <Compile Include="Services\Paging\PagingExtensions.cs" />
     <Compile Include="Services\RSS\FeedResult.cs" />
+    <Compile Include="ViewModels\LoggingIndexModel.cs" />
+    <Compile Include="ViewModels\LoggingManageModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SampleDatabase.mdf" />
-    <Content Include="App_Data\SampleDatabase_log.ldf">
-      <DependentUpon>SampleDatabase.mdf</DependentUpon>
-    </Content>
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Web.config" />
@@ -157,6 +156,7 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Services\Charting\Microsoft\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>

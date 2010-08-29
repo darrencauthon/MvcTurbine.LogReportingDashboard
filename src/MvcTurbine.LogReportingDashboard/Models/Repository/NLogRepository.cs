@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Data.SqlClient;
+using MvcTurbine.LogReportingDashboard.Models.Entities;
 using MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces;
 
 namespace MvcTurbine.LogReportingDashboard.Models.Repository
@@ -10,21 +11,21 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
     /// </summary>
     public class NLogRepository : ILogReportingRepository
     {
-        MvcLoggingDemoContainer _context = null;
+        MvcLoggingContainer _context = null;
 
         /// <summary>
         /// Default Constructor uses the default Entity Container
         /// </summary>
         public NLogRepository()
         {
-            _context = new MvcLoggingDemoContainer();
+            _context = new MvcLoggingContainer();
         }
 
         /// <summary>
         /// Overloaded constructor that can take an EntityContainer as a parameter so that it can be mocked out by our tests
         /// </summary>
         /// <param name="context">The Entity context</param>
-        public NLogRepository(MvcLoggingDemoContainer context)
+        public NLogRepository(MvcLoggingContainer context)
         {
             _context = context;
         }

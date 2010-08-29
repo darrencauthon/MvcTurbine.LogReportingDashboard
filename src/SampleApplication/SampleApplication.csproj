@@ -91,9 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SampleDatabase.mdf" />
-    <Content Include="App_Data\SampleDatabase_log.ldf">
-      <DependentUpon>SampleDatabase.mdf</DependentUpon>
-    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

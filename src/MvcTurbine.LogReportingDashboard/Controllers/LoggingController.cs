@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcLoggingDemo.Services.Paging;
 using MvcTurbine.LogReportingDashboard.Helpers;
+using MvcTurbine.LogReportingDashboard.Models;
+using MvcTurbine.LogReportingDashboard.Models.Repository;
+using MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces;
+using MvcTurbine.LogReportingDashboard.Services.Charting.Google.Visualization;
+using MvcTurbine.LogReportingDashboard.ViewModels;
 
 namespace MvcTurbine.LogReportingDashboard.Controllers
 {

@@ -11,57 +11,40 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // Original file name:
-// Generation date: 8/28/2010 8:08:12 AM
+// Generation date: 8/28/2010 9:34:53 PM
 namespace MvcTurbine.LogReportingDashboard.Models.Entities
 {
     
     /// <summary>
-    /// There are no comments for SampleDatabaseEntities in the schema.
+    /// There are no comments for MvcLoggingContainer in the schema.
     /// </summary>
-    public partial class SampleDatabaseEntities : global::System.Data.Objects.ObjectContext
+    public partial class MvcLoggingContainer : global::System.Data.Objects.ObjectContext
     {
         /// <summary>
-        /// Initializes a new SampleDatabaseEntities object using the connection string found in the 'SampleDatabaseEntities' section of the application configuration file.
+        /// Initializes a new MvcLoggingContainer object using the connection string found in the 'MvcLoggingContainer' section of the application configuration file.
         /// </summary>
-        public SampleDatabaseEntities() : 
-                base("name=SampleDatabaseEntities", "SampleDatabaseEntities")
+        public MvcLoggingContainer() : 
+                base("name=MvcLoggingContainer", "MvcLoggingContainer")
         {
             this.OnContextCreated();
         }
         /// <summary>
-        /// Initialize a new SampleDatabaseEntities object.
+        /// Initialize a new MvcLoggingContainer object.
         /// </summary>
-        public SampleDatabaseEntities(string connectionString) : 
-                base(connectionString, "SampleDatabaseEntities")
+        public MvcLoggingContainer(string connectionString) : 
+                base(connectionString, "MvcLoggingContainer")
         {
             this.OnContextCreated();
         }
         /// <summary>
-        /// Initialize a new SampleDatabaseEntities object.
+        /// Initialize a new MvcLoggingContainer object.
         /// </summary>
-        public SampleDatabaseEntities(global::System.Data.EntityClient.EntityConnection connection) : 
-                base(connection, "SampleDatabaseEntities")
+        public MvcLoggingContainer(global::System.Data.EntityClient.EntityConnection connection) : 
+                base(connection, "MvcLoggingContainer")
         {
             this.OnContextCreated();
         }
         partial void OnContextCreated();
-        /// <summary>
-        /// There are no comments for aspnet_WebEvent_Events in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<aspnet_WebEvent_Events> aspnet_WebEvent_Events
-        {
-            get
-            {
-                if ((this._aspnet_WebEvent_Events == null))
-                {
-                    this._aspnet_WebEvent_Events = base.CreateQuery<aspnet_WebEvent_Events>("[aspnet_WebEvent_Events]");
-                }
-                return this._aspnet_WebEvent_Events;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<aspnet_WebEvent_Events> _aspnet_WebEvent_Events;
         /// <summary>
         /// There are no comments for ELMAH_Error in the schema.
         /// </summary>
@@ -114,13 +97,22 @@ namespace MvcTurbine.LogReportingDashboard.Models.Entities
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         private global::System.Data.Objects.ObjectQuery<NLog_Error> _NLog_Error;
         /// <summary>
-        /// There are no comments for aspnet_WebEvent_Events in the schema.
+        /// There are no comments for vw_aspnet_WebEvents_extended in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToaspnet_WebEvent_Events(aspnet_WebEvent_Events aspnet_WebEvent_Events)
+        public global::System.Data.Objects.ObjectQuery<vw_aspnet_WebEvents_extended> vw_aspnet_WebEvents_extended
         {
-            base.AddObject("aspnet_WebEvent_Events", aspnet_WebEvent_Events);
+            get
+            {
+                if ((this._vw_aspnet_WebEvents_extended == null))
+                {
+                    this._vw_aspnet_WebEvents_extended = base.CreateQuery<vw_aspnet_WebEvents_extended>("[vw_aspnet_WebEvents_extended]");
+                }
+                return this._vw_aspnet_WebEvents_extended;
+            }
         }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Data.Objects.ObjectQuery<vw_aspnet_WebEvents_extended> _vw_aspnet_WebEvents_extended;
         /// <summary>
         /// There are no comments for ELMAH_Error in the schema.
         /// </summary>
@@ -145,458 +137,22 @@ namespace MvcTurbine.LogReportingDashboard.Models.Entities
         {
             base.AddObject("NLog_Error", nLog_Error);
         }
+        /// <summary>
+        /// There are no comments for vw_aspnet_WebEvents_extended in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public void AddTovw_aspnet_WebEvents_extended(vw_aspnet_WebEvents_extended vw_aspnet_WebEvents_extended)
+        {
+            base.AddObject("vw_aspnet_WebEvents_extended", vw_aspnet_WebEvents_extended);
+        }
     }
     /// <summary>
-    /// There are no comments for SampleDatabaseModel.aspnet_WebEvent_Events in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// EventId
-    /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="SampleDatabaseModel", Name="aspnet_WebEvent_Events")]
-    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
-    [global::System.Serializable()]
-    public partial class aspnet_WebEvent_Events : global::System.Data.Objects.DataClasses.EntityObject
-    {
-        /// <summary>
-        /// Create a new aspnet_WebEvent_Events object.
-        /// </summary>
-        /// <param name="eventId">Initial value of EventId.</param>
-        /// <param name="eventTimeUtc">Initial value of EventTimeUtc.</param>
-        /// <param name="eventTime">Initial value of EventTime.</param>
-        /// <param name="eventType">Initial value of EventType.</param>
-        /// <param name="eventSequence">Initial value of EventSequence.</param>
-        /// <param name="eventOccurrence">Initial value of EventOccurrence.</param>
-        /// <param name="eventCode">Initial value of EventCode.</param>
-        /// <param name="eventDetailCode">Initial value of EventDetailCode.</param>
-        /// <param name="machineName">Initial value of MachineName.</param>
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static aspnet_WebEvent_Events Createaspnet_WebEvent_Events(string eventId, global::System.DateTime eventTimeUtc, global::System.DateTime eventTime, string eventType, decimal eventSequence, decimal eventOccurrence, int eventCode, int eventDetailCode, string machineName)
-        {
-            aspnet_WebEvent_Events aspnet_WebEvent_Events = new aspnet_WebEvent_Events();
-            aspnet_WebEvent_Events.EventId = eventId;
-            aspnet_WebEvent_Events.EventTimeUtc = eventTimeUtc;
-            aspnet_WebEvent_Events.EventTime = eventTime;
-            aspnet_WebEvent_Events.EventType = eventType;
-            aspnet_WebEvent_Events.EventSequence = eventSequence;
-            aspnet_WebEvent_Events.EventOccurrence = eventOccurrence;
-            aspnet_WebEvent_Events.EventCode = eventCode;
-            aspnet_WebEvent_Events.EventDetailCode = eventDetailCode;
-            aspnet_WebEvent_Events.MachineName = machineName;
-            return aspnet_WebEvent_Events;
-        }
-        /// <summary>
-        /// There are no comments for property EventId in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string EventId
-        {
-            get
-            {
-                return this._EventId;
-            }
-            set
-            {
-                this.OnEventIdChanging(value);
-                this.ReportPropertyChanging("EventId");
-                this._EventId = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("EventId");
-                this.OnEventIdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _EventId;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventIdChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventIdChanged();
-        /// <summary>
-        /// There are no comments for property EventTimeUtc in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.DateTime EventTimeUtc
-        {
-            get
-            {
-                return this._EventTimeUtc;
-            }
-            set
-            {
-                this.OnEventTimeUtcChanging(value);
-                this.ReportPropertyChanging("EventTimeUtc");
-                this._EventTimeUtc = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("EventTimeUtc");
-                this.OnEventTimeUtcChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.DateTime _EventTimeUtc;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventTimeUtcChanging(global::System.DateTime value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventTimeUtcChanged();
-        /// <summary>
-        /// There are no comments for property EventTime in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.DateTime EventTime
-        {
-            get
-            {
-                return this._EventTime;
-            }
-            set
-            {
-                this.OnEventTimeChanging(value);
-                this.ReportPropertyChanging("EventTime");
-                this._EventTime = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("EventTime");
-                this.OnEventTimeChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.DateTime _EventTime;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventTimeChanging(global::System.DateTime value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventTimeChanged();
-        /// <summary>
-        /// There are no comments for property EventType in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string EventType
-        {
-            get
-            {
-                return this._EventType;
-            }
-            set
-            {
-                this.OnEventTypeChanging(value);
-                this.ReportPropertyChanging("EventType");
-                this._EventType = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("EventType");
-                this.OnEventTypeChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _EventType;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventTypeChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventTypeChanged();
-        /// <summary>
-        /// There are no comments for property EventSequence in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public decimal EventSequence
-        {
-            get
-            {
-                return this._EventSequence;
-            }
-            set
-            {
-                this.OnEventSequenceChanging(value);
-                this.ReportPropertyChanging("EventSequence");
-                this._EventSequence = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("EventSequence");
-                this.OnEventSequenceChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private decimal _EventSequence;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventSequenceChanging(decimal value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventSequenceChanged();
-        /// <summary>
-        /// There are no comments for property EventOccurrence in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public decimal EventOccurrence
-        {
-            get
-            {
-                return this._EventOccurrence;
-            }
-            set
-            {
-                this.OnEventOccurrenceChanging(value);
-                this.ReportPropertyChanging("EventOccurrence");
-                this._EventOccurrence = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("EventOccurrence");
-                this.OnEventOccurrenceChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private decimal _EventOccurrence;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventOccurrenceChanging(decimal value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventOccurrenceChanged();
-        /// <summary>
-        /// There are no comments for property EventCode in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int EventCode
-        {
-            get
-            {
-                return this._EventCode;
-            }
-            set
-            {
-                this.OnEventCodeChanging(value);
-                this.ReportPropertyChanging("EventCode");
-                this._EventCode = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("EventCode");
-                this.OnEventCodeChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _EventCode;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventCodeChanging(int value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventCodeChanged();
-        /// <summary>
-        /// There are no comments for property EventDetailCode in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int EventDetailCode
-        {
-            get
-            {
-                return this._EventDetailCode;
-            }
-            set
-            {
-                this.OnEventDetailCodeChanging(value);
-                this.ReportPropertyChanging("EventDetailCode");
-                this._EventDetailCode = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("EventDetailCode");
-                this.OnEventDetailCodeChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _EventDetailCode;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventDetailCodeChanging(int value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEventDetailCodeChanged();
-        /// <summary>
-        /// There are no comments for property Message in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string Message
-        {
-            get
-            {
-                return this._Message;
-            }
-            set
-            {
-                this.OnMessageChanging(value);
-                this.ReportPropertyChanging("Message");
-                this._Message = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("Message");
-                this.OnMessageChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _Message;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnMessageChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnMessageChanged();
-        /// <summary>
-        /// There are no comments for property ApplicationPath in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string ApplicationPath
-        {
-            get
-            {
-                return this._ApplicationPath;
-            }
-            set
-            {
-                this.OnApplicationPathChanging(value);
-                this.ReportPropertyChanging("ApplicationPath");
-                this._ApplicationPath = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("ApplicationPath");
-                this.OnApplicationPathChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _ApplicationPath;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnApplicationPathChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnApplicationPathChanged();
-        /// <summary>
-        /// There are no comments for property ApplicationVirtualPath in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string ApplicationVirtualPath
-        {
-            get
-            {
-                return this._ApplicationVirtualPath;
-            }
-            set
-            {
-                this.OnApplicationVirtualPathChanging(value);
-                this.ReportPropertyChanging("ApplicationVirtualPath");
-                this._ApplicationVirtualPath = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("ApplicationVirtualPath");
-                this.OnApplicationVirtualPathChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _ApplicationVirtualPath;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnApplicationVirtualPathChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnApplicationVirtualPathChanged();
-        /// <summary>
-        /// There are no comments for property MachineName in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string MachineName
-        {
-            get
-            {
-                return this._MachineName;
-            }
-            set
-            {
-                this.OnMachineNameChanging(value);
-                this.ReportPropertyChanging("MachineName");
-                this._MachineName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("MachineName");
-                this.OnMachineNameChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _MachineName;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnMachineNameChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnMachineNameChanged();
-        /// <summary>
-        /// There are no comments for property RequestUrl in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string RequestUrl
-        {
-            get
-            {
-                return this._RequestUrl;
-            }
-            set
-            {
-                this.OnRequestUrlChanging(value);
-                this.ReportPropertyChanging("RequestUrl");
-                this._RequestUrl = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("RequestUrl");
-                this.OnRequestUrlChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _RequestUrl;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnRequestUrlChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnRequestUrlChanged();
-        /// <summary>
-        /// There are no comments for property ExceptionType in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string ExceptionType
-        {
-            get
-            {
-                return this._ExceptionType;
-            }
-            set
-            {
-                this.OnExceptionTypeChanging(value);
-                this.ReportPropertyChanging("ExceptionType");
-                this._ExceptionType = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("ExceptionType");
-                this.OnExceptionTypeChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _ExceptionType;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnExceptionTypeChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnExceptionTypeChanged();
-        /// <summary>
-        /// There are no comments for property Details in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string Details
-        {
-            get
-            {
-                return this._Details;
-            }
-            set
-            {
-                this.OnDetailsChanging(value);
-                this.ReportPropertyChanging("Details");
-                this._Details = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("Details");
-                this.OnDetailsChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _Details;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnDetailsChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnDetailsChanged();
-    }
-    /// <summary>
-    /// There are no comments for SampleDatabaseModel.ELMAH_Error in the schema.
+    /// There are no comments for Model.ELMAH_Error in the schema.
     /// </summary>
     /// <KeyProperties>
     /// ErrorId
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="SampleDatabaseModel", Name="ELMAH_Error")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="ELMAH_Error")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class ELMAH_Error : global::System.Data.Objects.DataClasses.EntityObject
@@ -931,7 +487,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Entities
         partial void OnAllXmlChanged();
     }
     /// <summary>
-    /// There are no comments for SampleDatabaseModel.Log4Net_Error in the schema.
+    /// There are no comments for Model.Log4Net_Error in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
@@ -941,7 +497,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Entities
     /// Logger
     /// Message
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="SampleDatabaseModel", Name="Log4Net_Error")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Log4Net_Error")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Log4Net_Error : global::System.Data.Objects.DataClasses.EntityObject
@@ -1158,12 +714,12 @@ namespace MvcTurbine.LogReportingDashboard.Models.Entities
         partial void OnExceptionChanged();
     }
     /// <summary>
-    /// There are no comments for SampleDatabaseModel.NLog_Error in the schema.
+    /// There are no comments for Model.NLog_Error in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="SampleDatabaseModel", Name="NLog_Error")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="NLog_Error")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class NLog_Error : global::System.Data.Objects.DataClasses.EntityObject
@@ -1467,5 +1023,487 @@ namespace MvcTurbine.LogReportingDashboard.Models.Entities
         partial void OnallxmlChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnallxmlChanged();
+    }
+    /// <summary>
+    /// There are no comments for Model.vw_aspnet_WebEvents_extended in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// EventId
+    /// EventTimeUtc
+    /// EventTime
+    /// EventType
+    /// EventSequence
+    /// EventOccurrence
+    /// EventCode
+    /// EventDetailCode
+    /// MachineName
+    /// Level
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="vw_aspnet_WebEvents_extended")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class vw_aspnet_WebEvents_extended : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new vw_aspnet_WebEvents_extended object.
+        /// </summary>
+        /// <param name="eventId">Initial value of EventId.</param>
+        /// <param name="eventTimeUtc">Initial value of EventTimeUtc.</param>
+        /// <param name="eventTime">Initial value of EventTime.</param>
+        /// <param name="eventType">Initial value of EventType.</param>
+        /// <param name="eventSequence">Initial value of EventSequence.</param>
+        /// <param name="eventOccurrence">Initial value of EventOccurrence.</param>
+        /// <param name="eventCode">Initial value of EventCode.</param>
+        /// <param name="eventDetailCode">Initial value of EventDetailCode.</param>
+        /// <param name="machineName">Initial value of MachineName.</param>
+        /// <param name="level">Initial value of Level.</param>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public static vw_aspnet_WebEvents_extended Createvw_aspnet_WebEvents_extended(string eventId, global::System.DateTime eventTimeUtc, global::System.DateTime eventTime, string eventType, decimal eventSequence, decimal eventOccurrence, int eventCode, int eventDetailCode, string machineName, string level)
+        {
+            vw_aspnet_WebEvents_extended vw_aspnet_WebEvents_extended = new vw_aspnet_WebEvents_extended();
+            vw_aspnet_WebEvents_extended.EventId = eventId;
+            vw_aspnet_WebEvents_extended.EventTimeUtc = eventTimeUtc;
+            vw_aspnet_WebEvents_extended.EventTime = eventTime;
+            vw_aspnet_WebEvents_extended.EventType = eventType;
+            vw_aspnet_WebEvents_extended.EventSequence = eventSequence;
+            vw_aspnet_WebEvents_extended.EventOccurrence = eventOccurrence;
+            vw_aspnet_WebEvents_extended.EventCode = eventCode;
+            vw_aspnet_WebEvents_extended.EventDetailCode = eventDetailCode;
+            vw_aspnet_WebEvents_extended.MachineName = machineName;
+            vw_aspnet_WebEvents_extended.Level = level;
+            return vw_aspnet_WebEvents_extended;
+        }
+        /// <summary>
+        /// There are no comments for property EventId in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string EventId
+        {
+            get
+            {
+                return this._EventId;
+            }
+            set
+            {
+                this.OnEventIdChanging(value);
+                this.ReportPropertyChanging("EventId");
+                this._EventId = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("EventId");
+                this.OnEventIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _EventId;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventIdChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventIdChanged();
+        /// <summary>
+        /// There are no comments for property EventTimeUtc in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.DateTime EventTimeUtc
+        {
+            get
+            {
+                return this._EventTimeUtc;
+            }
+            set
+            {
+                this.OnEventTimeUtcChanging(value);
+                this.ReportPropertyChanging("EventTimeUtc");
+                this._EventTimeUtc = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("EventTimeUtc");
+                this.OnEventTimeUtcChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.DateTime _EventTimeUtc;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventTimeUtcChanging(global::System.DateTime value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventTimeUtcChanged();
+        /// <summary>
+        /// There are no comments for property EventTime in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.DateTime EventTime
+        {
+            get
+            {
+                return this._EventTime;
+            }
+            set
+            {
+                this.OnEventTimeChanging(value);
+                this.ReportPropertyChanging("EventTime");
+                this._EventTime = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("EventTime");
+                this.OnEventTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.DateTime _EventTime;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventTimeChanging(global::System.DateTime value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventTimeChanged();
+        /// <summary>
+        /// There are no comments for property EventType in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string EventType
+        {
+            get
+            {
+                return this._EventType;
+            }
+            set
+            {
+                this.OnEventTypeChanging(value);
+                this.ReportPropertyChanging("EventType");
+                this._EventType = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("EventType");
+                this.OnEventTypeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _EventType;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventTypeChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventTypeChanged();
+        /// <summary>
+        /// There are no comments for property EventSequence in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public decimal EventSequence
+        {
+            get
+            {
+                return this._EventSequence;
+            }
+            set
+            {
+                this.OnEventSequenceChanging(value);
+                this.ReportPropertyChanging("EventSequence");
+                this._EventSequence = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("EventSequence");
+                this.OnEventSequenceChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private decimal _EventSequence;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventSequenceChanging(decimal value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventSequenceChanged();
+        /// <summary>
+        /// There are no comments for property EventOccurrence in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public decimal EventOccurrence
+        {
+            get
+            {
+                return this._EventOccurrence;
+            }
+            set
+            {
+                this.OnEventOccurrenceChanging(value);
+                this.ReportPropertyChanging("EventOccurrence");
+                this._EventOccurrence = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("EventOccurrence");
+                this.OnEventOccurrenceChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private decimal _EventOccurrence;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventOccurrenceChanging(decimal value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventOccurrenceChanged();
+        /// <summary>
+        /// There are no comments for property EventCode in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public int EventCode
+        {
+            get
+            {
+                return this._EventCode;
+            }
+            set
+            {
+                this.OnEventCodeChanging(value);
+                this.ReportPropertyChanging("EventCode");
+                this._EventCode = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("EventCode");
+                this.OnEventCodeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private int _EventCode;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventCodeChanging(int value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventCodeChanged();
+        /// <summary>
+        /// There are no comments for property EventDetailCode in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public int EventDetailCode
+        {
+            get
+            {
+                return this._EventDetailCode;
+            }
+            set
+            {
+                this.OnEventDetailCodeChanging(value);
+                this.ReportPropertyChanging("EventDetailCode");
+                this._EventDetailCode = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("EventDetailCode");
+                this.OnEventDetailCodeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private int _EventDetailCode;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventDetailCodeChanging(int value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEventDetailCodeChanged();
+        /// <summary>
+        /// There are no comments for property Message in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Message
+        {
+            get
+            {
+                return this._Message;
+            }
+            set
+            {
+                this.OnMessageChanging(value);
+                this.ReportPropertyChanging("Message");
+                this._Message = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Message");
+                this.OnMessageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Message;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnMessageChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnMessageChanged();
+        /// <summary>
+        /// There are no comments for property ApplicationPath in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string ApplicationPath
+        {
+            get
+            {
+                return this._ApplicationPath;
+            }
+            set
+            {
+                this.OnApplicationPathChanging(value);
+                this.ReportPropertyChanging("ApplicationPath");
+                this._ApplicationPath = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("ApplicationPath");
+                this.OnApplicationPathChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _ApplicationPath;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnApplicationPathChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnApplicationPathChanged();
+        /// <summary>
+        /// There are no comments for property ApplicationVirtualPath in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string ApplicationVirtualPath
+        {
+            get
+            {
+                return this._ApplicationVirtualPath;
+            }
+            set
+            {
+                this.OnApplicationVirtualPathChanging(value);
+                this.ReportPropertyChanging("ApplicationVirtualPath");
+                this._ApplicationVirtualPath = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("ApplicationVirtualPath");
+                this.OnApplicationVirtualPathChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _ApplicationVirtualPath;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnApplicationVirtualPathChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnApplicationVirtualPathChanged();
+        /// <summary>
+        /// There are no comments for property MachineName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string MachineName
+        {
+            get
+            {
+                return this._MachineName;
+            }
+            set
+            {
+                this.OnMachineNameChanging(value);
+                this.ReportPropertyChanging("MachineName");
+                this._MachineName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("MachineName");
+                this.OnMachineNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _MachineName;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnMachineNameChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnMachineNameChanged();
+        /// <summary>
+        /// There are no comments for property RequestUrl in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string RequestUrl
+        {
+            get
+            {
+                return this._RequestUrl;
+            }
+            set
+            {
+                this.OnRequestUrlChanging(value);
+                this.ReportPropertyChanging("RequestUrl");
+                this._RequestUrl = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("RequestUrl");
+                this.OnRequestUrlChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _RequestUrl;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnRequestUrlChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnRequestUrlChanged();
+        /// <summary>
+        /// There are no comments for property ExceptionType in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string ExceptionType
+        {
+            get
+            {
+                return this._ExceptionType;
+            }
+            set
+            {
+                this.OnExceptionTypeChanging(value);
+                this.ReportPropertyChanging("ExceptionType");
+                this._ExceptionType = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("ExceptionType");
+                this.OnExceptionTypeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _ExceptionType;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnExceptionTypeChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnExceptionTypeChanged();
+        /// <summary>
+        /// There are no comments for property Details in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Details
+        {
+            get
+            {
+                return this._Details;
+            }
+            set
+            {
+                this.OnDetailsChanging(value);
+                this.ReportPropertyChanging("Details");
+                this._Details = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Details");
+                this.OnDetailsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Details;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDetailsChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDetailsChanged();
+        /// <summary>
+        /// There are no comments for property Level in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Level
+        {
+            get
+            {
+                return this._Level;
+            }
+            set
+            {
+                this.OnLevelChanging(value);
+                this.ReportPropertyChanging("Level");
+                this._Level = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Level");
+                this.OnLevelChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Level;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnLevelChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnLevelChanged();
     }
 }

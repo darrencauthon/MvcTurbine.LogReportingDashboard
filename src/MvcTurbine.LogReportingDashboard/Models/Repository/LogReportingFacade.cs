@@ -3,7 +3,9 @@ using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using MvcLoggingDemo.Services.Paging;
+using MvcTurbine.LogReportingDashboard.Models.Entities;
 using MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces;
+using MvcTurbine.LogReportingDashboard.Services.Logging;
 
 namespace MvcTurbine.LogReportingDashboard.Models.Repository
 {
@@ -12,7 +14,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
     /// </summary>
     public class LogReportingFacade : ILogReportingFacade
     {
-        MvcLoggingDemoContainer _context = new MvcLoggingDemoContainer();
+        MvcLoggingContainer _context = new MvcLoggingContainer();
 
         private Dictionary<string, string> logProviders = null;
 
@@ -28,7 +30,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
         /// Overloaded constructor that can take an EntityContainer as a parameter so that it can be mocked out by our tests
         /// </summary>
         /// <param name="context">The Entity context</param>
-        public LogReportingFacade(MvcLoggingDemoContainer context)
+        public LogReportingFacade(MvcLoggingContainer context)
         {
             _context = context;
 

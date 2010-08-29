@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using System.Xml;
+using MvcTurbine.LogReportingDashboard.Models.Repository;
 
 namespace MvcTurbine.LogReportingDashboard.Helpers
 {
