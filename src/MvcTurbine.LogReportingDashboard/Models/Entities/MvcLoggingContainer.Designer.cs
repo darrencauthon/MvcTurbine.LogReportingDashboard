@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // Original file name:
-// Generation date: 8/28/2010 9:34:53 PM
+// Generation date: 8/29/2010 8:45:09 AM
 namespace MvcTurbine.LogReportingDashboard.Models.Entities
 {
     

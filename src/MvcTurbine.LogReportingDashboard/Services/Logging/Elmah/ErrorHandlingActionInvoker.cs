@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Web.Mvc;
+using MvcTurbine.ComponentModel;
+using MvcTurbine.Web.Controllers;
 
 namespace MvcTurbine.LogReportingDashboard.Services.Logging.Elmah
 {
     /// <summary>
     /// This class allows an Exception filter to be injected when an MVC action is invoked
     /// </summary>
-    public class ErrorHandlingActionInvoker : ControllerActionInvoker
+    public class ErrorHandlingActionInvoker : TurbineActionInvoker
     {
         private readonly IExceptionFilter filter;
 
@@ -14,7 +16,8 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging.Elmah
         /// Constructor
         /// </summary>
         /// <param name="filter">The exception filter to inject</param>
-        public ErrorHandlingActionInvoker(IExceptionFilter filter)
+        public ErrorHandlingActionInvoker(IServiceLocator serviceLocator, IExceptionFilter filter) 
+            : base(serviceLocator)
         {
             if (filter == null)
             {
