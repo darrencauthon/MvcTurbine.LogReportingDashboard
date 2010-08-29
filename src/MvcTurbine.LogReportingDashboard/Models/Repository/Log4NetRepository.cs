@@ -43,13 +43,13 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
         /// <returns>A filtered list of log events</returns>
         public IQueryable<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel)
         {
-            IQueryable<LogEvent> list = (from b in _context.Log4Net_Error
+            IQueryable<LogEvent> list = (from b in _context.Log4Net_Error.ToList()
                                          where b.Date >= start && b.Date <= end
                                          && (b.Level == logLevel || logLevel == "All")
                                          select new LogEvent { IdType = "number"
                                                              , Id = ""
                                                              , IdAsInteger = b.Id
-                                                             , IdAsGuid = Guid.NewGuid()
+                                                             //, IdAsGuid = Guid.NewGuid()
                                                              , LoggerProviderName = "Log4Net"
                                                              , LogDate = b.Date
                                                              , MachineName = b.Thread
@@ -57,7 +57,9 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
                                                              , Type = ""
                                                              , Level = b.Level
                                                              , Source = b.Thread
-                                                             , StackTrace = "" });                                            
+                                                             , StackTrace = "" })
+                                                             .ToList()
+                                                             .AsQueryable();                                            
 
             return list;
         }

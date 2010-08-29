@@ -44,7 +44,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
         /// <returns>A filtered list of log events</returns>
         public IQueryable<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel)
         {
-            IQueryable<LogEvent> list = (from a in _context.ELMAH_Error
+            IQueryable<LogEvent> list = (from a in _context.ELMAH_Error.ToList()
                                          where a.TimeUtc >= start && a.TimeUtc <= end
                                          && (logLevel == "All" || logLevel == "Error")
                                          select new LogEvent { IdType = "guid"
@@ -57,7 +57,9 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
                                                                , Message = a.Message
                                                                , Type = a.Type
                                                                , Level = "Error"
-                                                               , Source = a.Source, StackTrace = "" });                                         
+                                                               , Source = a.Source, StackTrace = "" })
+                                                               .ToList()
+                                                               .AsQueryable();
 
             return list;     
         }

@@ -43,13 +43,13 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
         /// <returns>A filtered list of log events</returns>
         public IQueryable<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel)
         {
-            IQueryable<LogEvent> list = (from h in _context.vw_aspnet_WebEvents_extended
+            IQueryable<LogEvent> list = (from h in _context.vw_aspnet_WebEvents_extended.ToList()
                                          where h.EventTimeUtc >= start && h.EventTimeUtc <= end
                                          && (h.Level == logLevel || logLevel == "All")
                                          select new LogEvent { IdType = "string"
                                                              , Id = h.EventId
                                                              , IdAsInteger = 0
-                                                             , IdAsGuid = Guid.NewGuid()
+                                                             //, IdAsGuid = Guid.NewGuid()
                                                              , LoggerProviderName = "Health Monitoring"
                                                              , LogDate = h.EventTimeUtc
                                                              , MachineName = h.MachineName
@@ -57,7 +57,9 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
                                                              , Type = h.EventType
                                                              , Level = h.Level
                                                              , Source = h.RequestUrl
-                                                             , StackTrace = "" });                                        
+                                                             , StackTrace = "" })
+                                                             .ToList()
+                                                             .AsQueryable();
 
             return list;          
         }

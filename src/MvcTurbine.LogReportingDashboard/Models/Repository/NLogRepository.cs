@@ -43,7 +43,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
         /// <returns>A filtered list of log events</returns>
         public IQueryable<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel)
         {
-            IQueryable<LogEvent> list = (from b in _context.NLog_Error
+            IQueryable<LogEvent> list = (from b in _context.NLog_Error.ToList()
                                          where b.time_stamp >= start && b.time_stamp <= end
                                          && (b.level == logLevel || logLevel == "All")
                                          select new LogEvent { IdType = "number"
@@ -57,7 +57,9 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
                                                              , Type = b.type
                                                              , Level = b.level
                                                              , Source = b.source
-                                                             , StackTrace = b.stacktrace });                                        
+                                                             , StackTrace = b.stacktrace })
+                                                             .ToList()
+                                                             .AsQueryable();
 
             return list;
         }
