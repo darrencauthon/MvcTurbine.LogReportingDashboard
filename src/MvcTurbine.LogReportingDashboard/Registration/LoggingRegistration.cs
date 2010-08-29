@@ -4,7 +4,7 @@ using MvcTurbine.LogReportingDashboard.Services.Logging;
 using MvcTurbine.LogReportingDashboard.Services.Logging.Elmah;
 using MvcTurbine.LogReportingDashboard.Services.Logging.NLog;
 
-namespace MvcTurbine.LogReportingDashboard.Blades
+namespace MvcTurbine.LogReportingDashboard.Registration
 {
     public class LoggingRegistration : IServiceRegistration
     {
