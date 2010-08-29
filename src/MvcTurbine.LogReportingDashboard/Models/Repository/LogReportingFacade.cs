@@ -6,44 +6,20 @@ using MvcTurbine.LogReportingDashboard.Services.Paging;
 
 namespace MvcTurbine.LogReportingDashboard.Models.Repository
 {
-    /// <summary>
-    ///   This class provides a facade over all of our LogReport repositories
-    /// </summary>
     public class LogReportingFacade : ILogReportingFacade
     {
-        private Dictionary<string, ILogReportingRepository> logProviders;
+        private readonly ILogReportingRepository[] logReportingRepositories;
 
-        /// <summary>
-        ///   Overloaded constructor that can take an EntityContainer as a parameter so that it can be mocked out by our tests
-        /// </summary>
-        /// <param name = "logReportingRepositories"></param>
         public LogReportingFacade(ILogReportingRepository[] logReportingRepositories)
         {
-            logProviders = new Dictionary<string, ILogReportingRepository>();
-            foreach (var logReportingRepository in logReportingRepositories)
-                logProviders.Add(logReportingRepository.DescriptiveName, logReportingRepository);
+            this.logReportingRepositories = logReportingRepositories;
         }
 
-        /// <summary>
-        ///   Creates and returns an instance of a log provider
-        /// </summary>
-        /// <param name = "logProviderName">The type name of the log provider</param>
-        /// <returns>An instance of a log provider</returns>
         private ILogReportingRepository GetProvider(string logProviderName)
         {
-            return logProviders[logProviderName];
+            return logReportingRepositories.Single(x => x.DescriptiveName == logProviderName);
         }
 
-        /// <summary>
-        ///   Gets a filtered list of log events
-        /// </summary>
-        /// <param name = "pageIndex">0 based page index</param>
-        /// <param name = "pageSize">max number of records to return</param>
-        /// <param name = "start">start date</param>
-        /// <param name = "end">end date</param>
-        /// <param name = "logProviderName">name of the log provider</param>
-        /// <param name = "logLevel">The level of the log messages</param>
-        /// <returns>A filtered list of log events</returns>
         public IPagedList<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logProviderName, string logLevel)
         {
             IQueryable<LogEvent> list = null;
@@ -51,7 +27,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
             switch (logProviderName)
             {
                 case "All":
-                    foreach (var providerName in logProviders.Keys)
+                    foreach (var providerName in logReportingRepositories.Select(x => x.DescriptiveName))
                     {
                         var logList = GetProvider(providerName).GetByDateRangeAndType(pageIndex, pageSize, start, end, logLevel);
                         list = (list == null) ? logList : list.Union(logList);
@@ -68,37 +44,20 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
             return new PagedList<LogEvent>(list, pageIndex, pageSize);
         }
 
-        /// <summary>
-        ///   Returns a single Log event
-        /// </summary>
-        /// <param name = "logProviderName">name of the log provider</param>
-        /// <param name = "id">Id of the log event as a string</param>
-        /// <returns>A single Log event</returns>
         public LogEvent GetById(string logProviderName, string id)
         {
             var logEvent = GetProvider(logProviderName).GetById(id);
             return logEvent;
         }
 
-        /// <summary>
-        ///   Clears log messages between a date range and for specified log levels
-        /// </summary>
-        /// <param name = "logProviderName">name of the log provider</param>
-        /// <param name = "start">start date</param>
-        /// <param name = "end">end date</param>
-        /// <param name = "logLevels">string array of log levels</param>
         public void ClearLog(string logProviderName, DateTime start, DateTime end, string[] logLevels)
         {
             GetProvider(logProviderName).ClearLog(start, end, logLevels);
         }
 
-        /// <summary>
-        ///   Returns a list of all registered log providers
-        /// </summary>
-        /// <returns>A list of all registered log providers</returns>
         public IEnumerable<string> GetLogProviders()
         {
-            return logProviders.Keys;
+            return logReportingRepositories.Select(x => x.DescriptiveName);
         }
     }
 }
