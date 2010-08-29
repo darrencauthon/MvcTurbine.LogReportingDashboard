@@ -4,7 +4,6 @@ using System.Text;
 using System.Web.Mvc;
 using MvcTurbine.LogReportingDashboard.Helpers;
 using MvcTurbine.LogReportingDashboard.Models;
-using MvcTurbine.LogReportingDashboard.Models.Repository;
 using MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces;
 using MvcTurbine.LogReportingDashboard.Services.Charting.Google.Visualization;
 using MvcTurbine.LogReportingDashboard.ViewModels;
@@ -14,11 +13,6 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
     public class LoggingController : Controller
     {
         private readonly ILogReportingFacade loggingRepository;
-
-        public LoggingController()
-        {
-            loggingRepository = new LogReportingFacade();
-        }
 
         public LoggingController(ILogReportingFacade repository)
         {

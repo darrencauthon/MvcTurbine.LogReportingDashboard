@@ -74,23 +74,23 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
         /// <returns>A single Log event</returns>
         public LogEvent GetById(string id)
         {
-            var logEvent = logEvent = (from b in _context.vw_aspnet_WebEvents_extended
-                                       where b.EventId == id
-                                       select new LogEvent
-                                                  {
-                                                      IdType = "string"
-                                                      , Id = b.EventId
-                                                      , LoggerProviderName = "Health Monitoring"
-                                                      , LogDate = b.EventTimeUtc
-                                                      , MachineName = b.MachineName
-                                                      , Message = b.Message
-                                                      , Type = b.EventType
-                                                      , Level = b.Level
-                                                      , Source = b.RequestUrl
-                                                      , StackTrace = ""
-                                                      , AllXml = ""
-                                                  })
-                                          .SingleOrDefault();
+            var logEvent = (from b in _context.vw_aspnet_WebEvents_extended
+                            where b.EventId == id
+                            select new LogEvent
+                                       {
+                                           IdType = "string"
+                                           , Id = b.EventId
+                                           , LoggerProviderName = "Health Monitoring"
+                                           , LogDate = b.EventTimeUtc
+                                           , MachineName = b.MachineName
+                                           , Message = b.Message
+                                           , Type = b.EventType
+                                           , Level = b.Level
+                                           , Source = b.RequestUrl
+                                           , StackTrace = ""
+                                           , AllXml = ""
+                                       })
+                .SingleOrDefault();
 
             return logEvent;
         }
@@ -141,6 +141,11 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
             command.Parameters.Add(paramLogLevelList);
 
             command.ExecuteNonQuery();
+        }
+
+        public string DescriptiveName
+        {
+            get { return "Health Monitoring"; }
         }
     }
 }

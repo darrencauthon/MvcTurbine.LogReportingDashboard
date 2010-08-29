@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using System.Xml;
+using MvcTurbine.ComponentModel;
 using MvcTurbine.LogReportingDashboard.Models.Repository;
+using MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces;
 
 namespace MvcTurbine.LogReportingDashboard.Helpers
 {
@@ -18,10 +20,16 @@ namespace MvcTurbine.LogReportingDashboard.Helpers
         {
             get
             {
-                var repository = new LogReportingFacade();
-                IDictionary<string, string> dict = repository.GetLogProviders();
-                dict.Add("All", "All");
-                var list = dict.OrderBy(item => item.Key).Select(o => new SelectListItem {Text = o.Key, Value = o.Key}).ToList();
+                // yikes, will remove this in a bit
+                var repository = ServiceLocatorManager.Current.Resolve<ILogReportingFacade>();
+
+                var dict = new Dictionary<string, string> {{"All", "All"}};
+
+                foreach (var item in repository.GetLogProviders())
+                    dict.Add(item, item);
+
+                var list = dict.OrderBy(item => item.Key)
+                    .Select(o => new SelectListItem {Text = o.Key, Value = o.Key});
                 return list;
             }
         }

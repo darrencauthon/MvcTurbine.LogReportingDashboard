@@ -86,6 +86,7 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blades\LogReportingRepositoryRegistrationBlade.cs" />
     <Compile Include="Blades\NLogSetupBlade.cs" />
     <Compile Include="Controllers\LoggingController.cs" />
     <Compile Include="Global.asax.cs">

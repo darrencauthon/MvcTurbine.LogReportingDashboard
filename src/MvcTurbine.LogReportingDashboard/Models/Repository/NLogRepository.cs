@@ -132,5 +132,10 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
 
             command.ExecuteNonQuery();
         }
+
+        public string DescriptiveName
+        {
+            get { return "NLog"; }
+        }
     }
 }

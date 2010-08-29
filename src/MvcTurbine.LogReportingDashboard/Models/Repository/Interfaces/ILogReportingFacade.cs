@@ -42,6 +42,6 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces
         ///   Get's a list of all log providers registered in the web.config file
         /// </summary>
         /// <returns>A list of all log providers registered</returns>
-        Dictionary<string, string> GetLogProviders();
+        IEnumerable<string> GetLogProviders();
     }
 }

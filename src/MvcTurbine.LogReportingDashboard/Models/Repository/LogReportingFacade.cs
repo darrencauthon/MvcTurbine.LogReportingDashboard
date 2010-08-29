@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
-using MvcTurbine.LogReportingDashboard.Models.Entities;
 using MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces;
-using MvcTurbine.LogReportingDashboard.Services.Logging;
 using MvcTurbine.LogReportingDashboard.Services.Paging;
 
 namespace MvcTurbine.LogReportingDashboard.Models.Repository
@@ -14,49 +11,17 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
     /// </summary>
     public class LogReportingFacade : ILogReportingFacade
     {
-        private readonly MvcLoggingContainer _context = new MvcLoggingContainer();
-
-        private Dictionary<string, string> logProviders;
-
-        /// <summary>
-        ///   Default constructor
-        /// </summary>
-        public LogReportingFacade()
-        {
-            Init();
-        }
+        private Dictionary<string, ILogReportingRepository> logProviders;
 
         /// <summary>
         ///   Overloaded constructor that can take an EntityContainer as a parameter so that it can be mocked out by our tests
         /// </summary>
-        /// <param name = "context">The Entity context</param>
-        public LogReportingFacade(MvcLoggingContainer context)
+        /// <param name = "logReportingRepositories"></param>
+        public LogReportingFacade(ILogReportingRepository[] logReportingRepositories)
         {
-            _context = context;
-
-            Init();
-        }
-
-        /// <summary>
-        /// </summary>
-        private void Init()
-        {
-            logProviders = new Dictionary<string, string>();
-
-            // Call ConfigurationManager to read the custom logConfiguration
-            // of the web.config file and put its contents into an 
-            // instance of the custom class created for it.
-            var configSection = ConfigurationManager.GetSection("logConfiguration") as LogConfigurationSection;
-
-            if (configSection == null)
-                throw new ApplicationException("Failed to load the Log Configuration section.");
-            else
-            {
-                for (var i = 0; i < configSection.LogProviders.Count; i++)
-                {
-                    logProviders.Add(configSection.LogProviders[i].Name, configSection.LogProviders[i].Type);
-                }
-            }
+            logProviders = new Dictionary<string, ILogReportingRepository>();
+            foreach (var logReportingRepository in logReportingRepositories)
+                logProviders.Add(logReportingRepository.DescriptiveName, logReportingRepository);
         }
 
         /// <summary>
@@ -66,13 +31,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
         /// <returns>An instance of a log provider</returns>
         private ILogReportingRepository GetProvider(string logProviderName)
         {
-            var logSourceType = logProviders[logProviderName];
-
-            var providerType = Type.GetType(logSourceType);
-
-            var provider = Activator.CreateInstance(providerType, _context) as ILogReportingRepository;
-
-            return provider;
+            return logProviders[logProviderName];
         }
 
         /// <summary>
@@ -137,9 +96,9 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
         ///   Returns a list of all registered log providers
         /// </summary>
         /// <returns>A list of all registered log providers</returns>
-        public Dictionary<string, string> GetLogProviders()
+        public IEnumerable<string> GetLogProviders()
         {
-            return logProviders;
+            return logProviders.Keys;
         }
     }
 }
