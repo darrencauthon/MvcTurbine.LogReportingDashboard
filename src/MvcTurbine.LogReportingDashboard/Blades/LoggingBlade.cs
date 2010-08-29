@@ -1,16 +1,19 @@
 ﻿using System.Web.Mvc;
-using MvcTurbine.Blades;
+using MvcTurbine.ComponentModel;
+using MvcTurbine.LogReportingDashboard.Services.Logging;
 using MvcTurbine.LogReportingDashboard.Services.Logging.Elmah;
+using MvcTurbine.LogReportingDashboard.Services.Logging.NLog;
 
 namespace MvcTurbine.LogReportingDashboard.Blades
 {
-    public class LoggingBlade : Blade
+    public class LoggingRegistration : IServiceRegistration
     {
-        public override void Spin(IRotorContext context)
+        public void Register(IServiceLocator locator)
         {
-            var locator = context.ServiceLocator;
             locator.Register<IControllerFactory, ErrorHandlingControllerFactory>();
             locator.Register<IActionInvoker, ErrorHandlingActionInvoker>();
+
+            locator.Register<ILogger, NLogLogger>();
         }
     }
 }

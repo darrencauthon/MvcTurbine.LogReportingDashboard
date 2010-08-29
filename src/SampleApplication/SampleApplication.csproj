@@ -94,6 +94,7 @@
     <Content Include="App_Data\SampleDatabase_log.ldf">
       <DependentUpon>SampleDatabase.mdf</DependentUpon>
     </Content>
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
