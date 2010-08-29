@@ -8,6 +8,11 @@ namespace MvcTurbine.LogReportingDashboard.Blades
     {
         public override void Spin(IRotorContext context)
         {
+            SetRenderersForValuesThatWillBeSavedToTheDatabase();
+        }
+
+        private static void SetRenderersForValuesThatWillBeSavedToTheDatabase()
+        {
             LayoutRendererFactory.AddLayoutRenderer("utc_date", typeof (UtcDateRenderer));
             LayoutRendererFactory.AddLayoutRenderer("web_variables", typeof (WebVariablesRenderer));
         }
