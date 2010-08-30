@@ -15,32 +15,11 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
     {
         private readonly MvcLoggingContainer _context;
 
-        /// <summary>
-        ///   Default Constructor uses the default Entity Container
-        /// </summary>
-        public HealthMonitoringRepository()
-        {
-            _context = new MvcLoggingContainer();
-        }
-
-        /// <summary>
-        ///   Overloaded constructor that can take an EntityContainer as a parameter so that it can be mocked out by our tests
-        /// </summary>
-        /// <param name = "context">The Entity context</param>
         public HealthMonitoringRepository(MvcLoggingContainer context)
         {
             _context = context;
         }
 
-        /// <summary>
-        ///   Gets a filtered list of log events
-        /// </summary>
-        /// <param name = "pageIndex">0 based page index</param>
-        /// <param name = "pageSize">max number of records to return</param>
-        /// <param name = "start">start date</param>
-        /// <param name = "end">end date</param>
-        /// <param name = "logLevel">The level of the log messages</param>
-        /// <returns>A filtered list of log events</returns>
         public IQueryable<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel)
         {
             var list = (from h in _context.vw_aspnet_WebEvents_extended.ToList()
@@ -67,11 +46,6 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
             return list;
         }
 
-        /// <summary>
-        ///   Returns a single Log event
-        /// </summary>
-        /// <param name = "id">Id of the log event as a string</param>
-        /// <returns>A single Log event</returns>
         public LogEvent GetById(string id)
         {
             var logEvent = (from b in _context.vw_aspnet_WebEvents_extended
@@ -90,17 +64,11 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
                                            , StackTrace = ""
                                            , AllXml = ""
                                        })
-                .SingleOrDefault();
+                .FirstOrDefault();
 
             return logEvent;
         }
 
-        /// <summary>
-        ///   Clears log messages between a date range and for specified log levels
-        /// </summary>
-        /// <param name = "start">start date</param>
-        /// <param name = "end">end date</param>
-        /// <param name = "logLevels">string array of log levels</param>
         public void ClearLog(DateTime start, DateTime end, string[] logLevels)
         {
             var logLevelList = "";

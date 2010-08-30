@@ -17,7 +17,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
 
         private ILogReportingRepository GetProvider(string logProviderName)
         {
-            return logReportingRepositories.Single(x => x.DescriptiveName == logProviderName);
+            return logReportingRepositories.First(x => string.Compare(x.DescriptiveName, logProviderName, true) == 0);
         }
 
         public IPagedList<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logProviderName, string logLevel)
