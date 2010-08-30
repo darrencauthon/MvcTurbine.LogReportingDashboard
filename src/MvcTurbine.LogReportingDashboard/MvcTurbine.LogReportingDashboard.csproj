@@ -110,7 +110,7 @@
     <Compile Include="Models\Repository\HealthMonitoringRepository.cs" />
     <Compile Include="Models\Repository\Interfaces\ILogReportingFacade.cs" />
     <Compile Include="Models\Repository\Interfaces\ILogReportingRepository.cs" />
-    <Compile Include="Models\Repository\Log4NetRepository.cs" />
+    <Compile Include="ThingsToFixLater\Log4NetRepository.cs" />
     <Compile Include="Models\Repository\LogReportingFacade.cs" />
     <Compile Include="Models\Repository\NLogRepository.cs" />
     <Compile Include="Models\RuleViolation.cs" />
