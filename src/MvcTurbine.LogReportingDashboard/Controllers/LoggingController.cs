@@ -19,15 +19,6 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
             loggingRepository = repository;
         }
 
-        /// <summary>
-        ///   Returns the Index view
-        /// </summary>
-        /// <param name = "Period">Text representation of the date time period. eg: Today, Yesterday, Last Week etc.</param>
-        /// <param name = "LoggerProviderName">Elmah, Log4Net, NLog, Health Monitoring etc</param>
-        /// <param name = "LogLevel">Debug, Info, Warning, Error, Fatal</param>
-        /// <param name = "page">The current page index (0 based)</param>
-        /// <param name = "PageSize">The number of records per page</param>
-        /// <returns></returns>
         public ActionResult Index(string Period, string LoggerProviderName, string LogLevel, int? page, int? PageSize)
         {
             // Set up our default values
@@ -63,9 +54,6 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Logging/Details/5
-
         public ActionResult Details(string loggerProviderName, string id)
         {
             var logEvent = loggingRepository.GetById(loggerProviderName, id);
@@ -73,18 +61,11 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
             return View(logEvent);
         }
 
-        // string Period, string LoggerProviderName, string LogLevel, int? page, int? PageSize
         public ActionResult Search()
         {
             return View();
         }
 
-        /// <summary>
-        /// </summary>
-        /// <param name = "Period"></param>
-        /// <param name = "LoggerProviderName"></param>
-        /// <param name = "LogLevel"></param>
-        /// <returns></returns>
         public JsonResult ChartData(string Period, string LoggerProviderName, string LogLevel)
         {
             if (Period == "Today" || Period == "Yesterday")
@@ -97,12 +78,6 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
             }
         }
 
-        /// <summary>
-        /// </summary>
-        /// <param name = "Period"></param>
-        /// <param name = "LoggerProviderName"></param>
-        /// <param name = "logLevel"></param>
-        /// <returns></returns>
         public JsonResult ChartDataByHour(string Period, string LoggerProviderName, string logLevel)
         {
             Func<LogEvent, Object> groupByClause = c => c.LogDate.ToLocalTime().Hour;
@@ -110,12 +85,6 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
             return ChartDataByTimePeriod(Period, LoggerProviderName, logLevel, "", groupByClause);
         }
 
-        /// <summary>
-        /// </summary>
-        /// <param name = "Period"></param>
-        /// <param name = "LoggerProviderName"></param>
-        /// <param name = "logLevel"></param>
-        /// <returns></returns>
         public JsonResult ChartDataByDay(string Period, string LoggerProviderName, string logLevel)
         {
             Func<LogEvent, Object> groupByClause = c => c.LogDate.ToLocalTime().Date;
@@ -123,14 +92,6 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
             return ChartDataByTimePeriod(Period, LoggerProviderName, logLevel, "dd/MM/yyyy", groupByClause);
         }
 
-        /// <summary>
-        /// </summary>
-        /// <param name = "Period"></param>
-        /// <param name = "LoggerProviderName"></param>
-        /// <param name = "logLevel"></param>
-        /// <param name = "keyFormatString"></param>
-        /// <param name = "groupByClause"></param>
-        /// <returns></returns>
         public JsonResult ChartDataByTimePeriod(string Period, string LoggerProviderName, string logLevel, string keyFormatString, Func<LogEvent, Object> groupByClause)
         {
             var timePeriod = TimePeriodHelper.GetUtcTimePeriod(Period);
@@ -185,13 +146,6 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
             return Json(chartData, "text/x-json", Encoding.UTF8, JsonRequestBehavior.AllowGet);
         }
 
-        /// <summary>
-        ///   Gets the chart
-        /// </summary>
-        /// <param name = "Period"></param>
-        /// <param name = "LoggerProviderName"></param>
-        /// <param name = "LogLevel"></param>
-        /// <returns></returns>
         public ActionResult Chart(string Period, string LoggerProviderName, string LogLevel)
         {
             var defaultPeriod = Session["Period"] == null ? "Today" : Session["Period"].ToString();
@@ -207,18 +161,12 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Logging/Manage
-
         public ActionResult Manage()
         {
             var model = new LoggingManageModel();
 
             return View(model);
         }
-
-        //
-        // POST: /Logging/Manage/
 
         [HttpPost]
         public ActionResult Manage(LoggingManageModel model)
@@ -238,38 +186,5 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
             }
         }
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="Period"></param>
-        ///// <param name="LoggerProviderName"></param>
-        ///// <param name="LogLevel"></param>
-        ///// <returns></returns>
-        //public FeedResult RssFeed(string Period, string LoggerProviderName, string LogLevel)
-        //{
-        //    string defaultPeriod = Session["Period"] == null ? "This Week" : Session["Period"].ToString();
-        //    string defaultLoggerProviderName = Session["LoggerProviderName"] == null ? "All" : Session["LoggerProviderName"].ToString();
-        //    string defaultLogLevel = Session["LogLevel"] == null ? "Error" : Session["LogLevel"].ToString();
-
-        //    Period = (Period == null) ? defaultPeriod : Period;
-        //    LoggerProviderName = (LoggerProviderName == null) ? defaultLoggerProviderName : LoggerProviderName;
-        //    LogLevel = (LogLevel == null) ? defaultLogLevel : LogLevel;
-
-        //    TimePeriod timePeriod = TimePeriodHelper.GetUtcTimePeriod(Period);
-
-        //    // Grab ALL entries for the feed (DO NOT PAGE feed DATA!!!)
-        //    IPagedList<LogEvent> chartEntries = loggingRepository.GetByDateRangeAndType(0, Int32.MaxValue, timePeriod.Start, timePeriod.End, LoggerProviderName, LogLevel);
-
-        //    var postItems = chartEntries.Select(p => new SyndicationItem(string.Format("{0} - {1} - {2}", p.LogDate, p.Level, p.LoggerProviderName), p.Message, new Uri(Url.AbsoluteAction("Details", new { LoggerProviderName = p.LoggerProviderName, Id = p.Id }))));
-
-        //    Uri feedAlternateLink = Url.ActionFull("Index", "Logging");
-
-        //    var feed = new SyndicationFeed("MVC Logging Demo -> Log Reporting", string.Format("Log Provider: {0}, Log Level : {1}, From {2} to {3} ({4})", LoggerProviderName, LogLevel, timePeriod.Start.ToShortDateString(), timePeriod.End.ToShortDateString(), Period), feedAlternateLink, postItems)
-        //    {
-        //        Language = "en-US"
-        //    };
-
-        //    return new FeedResult(new Rss20FeedFormatter(feed));
-        //}
     }
 }
