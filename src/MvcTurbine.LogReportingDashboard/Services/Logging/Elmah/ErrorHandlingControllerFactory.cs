@@ -39,8 +39,7 @@ namespace MvcTurbine.LogReportingDashboard.Services.Logging.Elmah
             if (c != null)
             {
                 c.ActionInvoker =
-                    new ErrorHandlingActionInvoker(serviceLocator,
-                                                   new HandleErrorWithELMAHAttribute());
+                    new ErrorHandlingActionInvoker(serviceLocator, serviceLocator.Resolve<HandleErrorWithELMAHAttribute>());
             }
 
             return controller;
