@@ -112,7 +112,6 @@
     <Compile Include="ThingsToFixLater\Log4NetRepository.cs" />
     <Compile Include="Models\Repository\LogReportingFacade.cs" />
     <Compile Include="Models\Repository\NLogRepository.cs" />
-    <Compile Include="Models\RuleViolation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration\LoggerRegistration.cs" />
     <Compile Include="Registration\MvcInternalsRegistration.cs" />
