@@ -137,7 +137,6 @@
     <Compile Include="Services\Paging\PagingExtensions.cs" />
     <Compile Include="Services\RSS\FeedResult.cs" />
     <Compile Include="ViewModels\LoggingIndexModel.cs" />
-    <Compile Include="ViewModels\LoggingManageModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
