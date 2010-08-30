@@ -1,0 +1,7 @@
+The sql scripts here will need to be run to add the tables necessary to store your logs.  Run them or your logging won't work.
+
+ELMAH Setup.sql and Nlog Setup.sql can be run without affecting anything else.
+
+The Health monitoring Setup files need to be run in order, #1 then #2.
+
+Health Monitoring Setup 1.sql stores the tables, stored procedures, and views that the Asp.Net membership setup runs.  I'm including it here just to save you the internet search in case you don't know it.
