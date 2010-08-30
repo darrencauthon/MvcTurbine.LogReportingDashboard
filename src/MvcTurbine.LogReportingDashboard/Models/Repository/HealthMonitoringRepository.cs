@@ -13,16 +13,16 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
     /// </summary>
     public class HealthMonitoringRepository : ILogReportingRepository
     {
-        private readonly MvcLoggingContainer _context;
+        private readonly MvcLoggingContainer context;
 
         public HealthMonitoringRepository(MvcLoggingContainer context)
         {
-            _context = context;
+            this.context = context;
         }
 
         public IQueryable<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel)
         {
-            var list = (from h in _context.vw_aspnet_WebEvents_extended.ToList()
+            var list = (from h in context.vw_aspnet_WebEvents_extended.ToList()
                         where h.EventTimeUtc >= start && h.EventTimeUtc <= end
                               && (h.Level == logLevel || logLevel == "All")
                         select new LogEvent
@@ -48,7 +48,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
 
         public LogEvent GetById(string id)
         {
-            var logEvent = (from b in _context.vw_aspnet_WebEvents_extended
+            var logEvent = (from b in context.vw_aspnet_WebEvents_extended
                             where b.EventId == id
                             select new LogEvent
                                        {
@@ -99,7 +99,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
             var paramEndDate = new SqlParameter {ParameterName = "p1", Value = end.ToUniversalTime(), DbType = DbType.DateTime};
             var paramLogLevelList = new SqlParameter {ParameterName = "p2", Value = logLevelList};
 
-            var storeConnection = ((EntityConnection) _context.Connection).StoreConnection;
+            var storeConnection = ((EntityConnection) context.Connection).StoreConnection;
             var command = storeConnection.CreateCommand();
             command.CommandText = commandText;
             command.CommandType = CommandType.StoredProcedure;

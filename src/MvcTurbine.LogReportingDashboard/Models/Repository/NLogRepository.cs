@@ -8,21 +8,18 @@ using MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces;
 
 namespace MvcTurbine.LogReportingDashboard.Models.Repository
 {
-    /// <summary>
-    ///   This class extracts information that NLog stores so that we can report on it
-    /// </summary>
     public class NLogRepository : ILogReportingRepository
     {
-        private readonly MvcLoggingContainer _context;
+        private readonly MvcLoggingContainer context;
 
         public NLogRepository(MvcLoggingContainer context)
         {
-            _context = context;
+            this.context = context;
         }
 
         public IQueryable<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel)
         {
-            var list = (from b in _context.NLog_Error.ToList()
+            var list = (from b in context.NLog_Error.ToList()
                         where b.time_stamp >= start && b.time_stamp <= end
                               && (b.level == logLevel || logLevel == "All")
                         select new LogEvent
@@ -50,7 +47,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
         {
             var logEventId = Convert.ToInt32(id);
 
-            var logEvent = (from b in _context.NLog_Error
+            var logEvent = (from b in context.NLog_Error
                             where b.Id == logEventId
                             select new LogEvent
                                        {
@@ -89,7 +86,7 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
             var paramEndDate = new SqlParameter {ParameterName = "p1", Value = end.ToUniversalTime(), DbType = DbType.DateTime};
             var paramLogLevelList = new SqlParameter {ParameterName = "p2", Value = logLevelList};
 
-            var storeConnection = ((EntityConnection) _context.Connection).StoreConnection;
+            var storeConnection = ((EntityConnection) context.Connection).StoreConnection;
             var command = storeConnection.CreateCommand();
             command.CommandText = commandText;
             command.CommandType = CommandType.StoredProcedure;
