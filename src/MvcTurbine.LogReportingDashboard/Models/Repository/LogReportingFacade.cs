@@ -50,11 +50,6 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
             return logEvent;
         }
 
-        public void ClearLog(string logProviderName, DateTime start, DateTime end, string[] logLevels)
-        {
-            GetProvider(logProviderName).ClearLog(start, end, logLevels);
-        }
-
         public IEnumerable<string> GetLogProviders()
         {
             return logReportingRepositories.Select(x => x.DescriptiveName);

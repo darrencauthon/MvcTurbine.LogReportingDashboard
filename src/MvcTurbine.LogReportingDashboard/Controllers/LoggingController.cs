@@ -160,31 +160,5 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
 
             return View(model);
         }
-
-        public ActionResult Manage()
-        {
-            var model = new LoggingManageModel();
-
-            return View(model);
-        }
-
-        [HttpPost]
-        public ActionResult Manage(LoggingManageModel model)
-        {
-            try
-            {
-                var logLevels = new[] {"Warn"};
-                loggingRepository.ClearLog(model.LogSourceName, model.StartDate, model.EndDate, logLevels);
-
-                ViewData["Message"] = "The log has been cleared";
-
-                return View(model);
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
     }
 }

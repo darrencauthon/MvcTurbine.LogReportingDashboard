@@ -28,14 +28,6 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces
         LogEvent GetById(string id);
 
         /// <summary>
-        ///   Clears log messages between a date range and for specified log levels
-        /// </summary>
-        /// <param name = "start">start date</param>
-        /// <param name = "end">end date</param>
-        /// <param name = "logLevels">string array of log levels</param>
-        void ClearLog(DateTime start, DateTime end, string[] logLevels);
-
-        /// <summary>
         /// Returns a descriptive name for the repository.
         /// </summary>
         string DescriptiveName { get; }

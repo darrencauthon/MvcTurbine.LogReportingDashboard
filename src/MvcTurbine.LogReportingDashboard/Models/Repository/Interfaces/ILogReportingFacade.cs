@@ -30,15 +30,6 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces
         LogEvent GetById(string logProviderName, string id);
 
         /// <summary>
-        ///   Clears log messages for a given date range and log level
-        /// </summary>
-        /// <param name = "logProviderName">Name of the log provider</param>
-        /// <param name = "start">start date</param>
-        /// <param name = "end">end date</param>
-        /// <param name = "logLevels">The level of the log messages</param>
-        void ClearLog(string logProviderName, DateTime start, DateTime end, string[] logLevels);
-
-        /// <summary>
         ///   Get's a list of all log providers registered in the web.config file
         /// </summary>
         /// <returns>A list of all log providers registered</returns>

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Data;
-using System.Data.EntityClient;
-using System.Data.SqlClient;
 using System.Linq;
 using MvcTurbine.LogReportingDashboard.Models.Entities;
 using MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces;
@@ -66,36 +63,6 @@ namespace MvcTurbine.LogReportingDashboard.Models.Repository
                 .FirstOrDefault();
 
             return logEvent;
-        }
-
-        public void ClearLog(DateTime start, DateTime end, string[] logLevels)
-        {
-            var logLevelList = "";
-            foreach (var logLevel in logLevels)
-            {
-                logLevelList += ",'" + logLevel + "'";
-            }
-            if (logLevelList.Length > 0)
-            {
-                logLevelList = logLevelList.Substring(1);
-            }
-
-            var commandText = "delete from NLog_Error WHERE time_stamp >= @p0 and time_stamp <= @p1 and level in (@p2)";
-
-            var paramStartDate = new SqlParameter {ParameterName = "p0", Value = start.ToUniversalTime(), DbType = DbType.DateTime};
-            var paramEndDate = new SqlParameter {ParameterName = "p1", Value = end.ToUniversalTime(), DbType = DbType.DateTime};
-            var paramLogLevelList = new SqlParameter {ParameterName = "p2", Value = logLevelList};
-
-            var storeConnection = ((EntityConnection) context.Connection).StoreConnection;
-            var command = storeConnection.CreateCommand();
-            command.CommandText = commandText;
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.Add(paramStartDate);
-            command.Parameters.Add(paramEndDate);
-            command.Parameters.Add(paramLogLevelList);
-
-            command.ExecuteNonQuery();
         }
 
         public string DescriptiveName
