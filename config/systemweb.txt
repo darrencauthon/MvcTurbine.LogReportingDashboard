@@ -1,0 +1,19 @@
+<healthMonitoring enabled="true">
+      <eventMappings>
+        <clear />
+        <!-- Log ALL error events -->
+        <add name="All Errors" type="System.Web.Management.WebBaseErrorEvent" startEventCode="0" endEventCode="2147483647" />
+        <!-- Log application startup/shutdown events -->
+        <add name="Application Events" type="System.Web.Management.WebApplicationLifetimeEvent" startEventCode="0" endEventCode="2147483647" />
+      </eventMappings>
+      <providers>
+        <clear />
+        <!-- Provide any customized SqlWebEventProvider information here (such as a different connection string name value -->
+        <add connectionStringName="MvcLoggingDatabaseConnectionString" maxEventDetailsLength="1073741823" buffer="false" name="SqlWebEventProvider" type="System.Web.Management.SqlWebEventProvider" />
+      </providers>
+      <rules>
+        <clear />
+        <add name="All Errors Default" eventName="All Errors" provider="SqlWebEventProvider" profile="Default" minInstances="1" maxLimit="Infinite" minInterval="00:00:00" />
+        <add name="Application Events Default" eventName="Application Events" provider="SqlWebEventProvider" profile="Default" minInstances="1" maxLimit="Infinite" minInterval="00:00:00" />
+      </rules>
+    </healthMonitoring>

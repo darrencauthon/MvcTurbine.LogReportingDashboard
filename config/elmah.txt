@@ -1,0 +1,10 @@
+<elmah>
+    <security allowRemoteAccess="0" />
+    <errorLog type="Elmah.SqlErrorLog, Elmah" connectionStringName="MvcLoggingDatabaseConnectionString" />
+
+    <!-- 
+    <errorMail from="youremail@example.com" to="youremail@example.com" cc="" subject="Elmah Error" async="true" smtpPort="25" smtpServer="[EmailServerName]" userName="" password="" />
+    <errorLog type="Elmah.XmlFileErrorLog, Elmah" logPath="~/App_Data" />
+    -->
+
+  </elmah>
