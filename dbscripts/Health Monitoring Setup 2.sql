@@ -1,18 +1,18 @@
-/****** Object:&nbsp; Table [dbo].[aspnet_WebEvent_ErrorCodes]&nbsp;&nbsp;&nbsp; Script Date: 07/29/2010 09:56:45 ******/
-IF&nbsp; EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[aspnet_WebEvent_ErrorCodes]') AND type in (N'U'))
+/****** Object: Table [dbo].[aspnet_WebEvent_ErrorCodes] Script Date: 07/29/2010 09:56:45 ******/
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[aspnet_WebEvent_ErrorCodes]') AND type in (N'U'))
 DROP TABLE [dbo].[aspnet_WebEvent_ErrorCodes]
 GO
-/****** Object:&nbsp; Default [DF_aspnet_WebEvent_ErrorCodes_Level]&nbsp;&nbsp;&nbsp; Script Date: 07/29/2010 09:56:45 ******/
-IF&nbsp; EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_aspnet_WebEvent_ErrorCodes_Level]') AND parent_object_id = OBJECT_ID(N'[dbo].[aspnet_WebEvent_ErrorCodes]'))
+/****** Object: Default [DF_aspnet_WebEvent_ErrorCodes_Level] Script Date: 07/29/2010 09:56:45 ******/
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_aspnet_WebEvent_ErrorCodes_Level]') AND parent_object_id = OBJECT_ID(N'[dbo].[aspnet_WebEvent_ErrorCodes]'))
 Begin
-IF&nbsp; EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_aspnet_WebEvent_ErrorCodes_Level]') AND type = 'D')
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_aspnet_WebEvent_ErrorCodes_Level]') AND type = 'D')
 BEGIN
 ALTER TABLE [dbo].[aspnet_WebEvent_ErrorCodes] DROP CONSTRAINT [DF_aspnet_WebEvent_ErrorCodes_Level]
 END
 
 End
 GO
-/****** Object:&nbsp; Table [dbo].[aspnet_WebEvent_ErrorCodes]&nbsp;&nbsp;&nbsp; Script Date: 07/29/2010 09:56:45 ******/
+/****** Object: Table [dbo].[aspnet_WebEvent_ErrorCodes] Script Date: 07/29/2010 09:56:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -27,7 +27,7 @@ CREATE TABLE [dbo].[aspnet_WebEvent_ErrorCodes](
  CONSTRAINT [PK_aspnet_WebEvent_ErrorCodes] PRIMARY KEY CLUSTERED
 (
  [Id] ASC
-)WITH (PAD_INDEX&nbsp; = OFF, STATISTICS_NORECOMPUTE&nbsp; = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS&nbsp; = ON, ALLOW_PAGE_LOCKS&nbsp; = ON)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
 )
 END
 GO
@@ -96,12 +96,12 @@ INSERT [dbo].[aspnet_WebEvent_ErrorCodes] ([Id], [Name], [EventCode], [Level]) V
 INSERT [dbo].[aspnet_WebEvent_ErrorCodes] ([Id], [Name], [EventCode], [Level]) VALUES (62, N'SqlProviderEventsDropped', 50301, N'Info')
 INSERT [dbo].[aspnet_WebEvent_ErrorCodes] ([Id], [Name], [EventCode], [Level]) VALUES (63, N'WebExtendedBase', 100000, N'Info')
 SET IDENTITY_INSERT [dbo].[aspnet_WebEvent_ErrorCodes] OFF
-/****** Object:&nbsp; Default [DF_aspnet_WebEvent_ErrorCodes_Level]&nbsp;&nbsp;&nbsp; Script Date: 07/29/2010 09:56:45 ******/
+/****** Object: Default [DF_aspnet_WebEvent_ErrorCodes_Level] Script Date: 07/29/2010 09:56:45 ******/
 IF Not EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_aspnet_WebEvent_ErrorCodes_Level]') AND parent_object_id = OBJECT_ID(N'[dbo].[aspnet_WebEvent_ErrorCodes]'))
 Begin
 IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_aspnet_WebEvent_ErrorCodes_Level]') AND type = 'D')
 BEGIN
-ALTER TABLE [dbo].[aspnet_WebEvent_ErrorCodes] ADD&nbsp; CONSTRAINT [DF_aspnet_WebEvent_ErrorCodes_Level]&nbsp; DEFAULT ('Info') FOR [Level]
+ALTER TABLE [dbo].[aspnet_WebEvent_ErrorCodes] ADD CONSTRAINT [DF_aspnet_WebEvent_ErrorCodes_Level] DEFAULT ('Info') FOR [Level]
 END
 
 End
