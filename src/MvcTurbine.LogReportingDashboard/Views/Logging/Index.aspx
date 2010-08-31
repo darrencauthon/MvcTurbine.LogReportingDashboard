@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<MvcTurbine.LogReportingDashboard.ViewModels.LoggingIndexModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Logging.Master" Inherits="System.Web.Mvc.ViewPage<MvcTurbine.LogReportingDashboard.ViewModels.LoggingIndexModel>" %>
 <%@ Import Namespace="MvcTurbine.LogReportingDashboard.Helpers" %>
 <%@ Import Namespace="MvcTurbine.LogReportingDashboard.Services.Paging" %>
 
@@ -7,9 +7,6 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>Index</h2>
-
     <div class="grid-options">
         View : 
         <strong>List</strong>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<MvcTurbine.LogReportingDashboard.ViewModels.LoggingManageModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Logging.Master" Inherits="System.Web.Mvc.ViewPage<MvcTurbine.LogReportingDashboard.ViewModels.LoggingManageModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Manage
