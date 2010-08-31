@@ -126,7 +126,6 @@
     <Compile Include="Services\Logging\ILogger.cs" />
     <Compile Include="Services\Logging\Log4Net\Log4NetLogger.cs" />
     <Compile Include="Services\Logging\LogConfigurationSection.cs" />
-    <Compile Include="Services\Logging\LogFactory.cs" />
     <Compile Include="Services\Logging\LogUtility.cs" />
     <Compile Include="Services\Logging\NLog\NLogLogger.cs" />
     <Compile Include="Services\Logging\NLog\UtcDateRenderer.cs" />
