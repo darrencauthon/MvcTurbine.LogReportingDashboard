@@ -1,0 +1,3 @@
+      <add name="ErrorLog" type="Elmah.ErrorLogModule, Elmah" />
+      <add name="ErrorFilter" type="Elmah.ErrorFilterModule, Elmah" />
+      <add name="ErrorMail" type="Elmah.ErrorMailModule, Elmah" />
