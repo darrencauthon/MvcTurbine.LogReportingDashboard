@@ -89,9 +89,6 @@
     <Compile Include="Blades\LogReportingRepositoryRegistrationBlade.cs" />
     <Compile Include="Blades\NLogSetupBlade.cs" />
     <Compile Include="Controllers\LoggingController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\DateTimeExtensionMethods.cs" />
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Helpers\FormsHelper.cs" />
@@ -138,7 +135,6 @@
     <Compile Include="ViewModels\LoggingIndexModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Global.asax" />
     <EmbeddedResource Include="Views\Logging\Chart.aspx" />
     <EmbeddedResource Include="Views\Logging\Details.aspx" />
     <EmbeddedResource Include="Views\Logging\Index.aspx" />
