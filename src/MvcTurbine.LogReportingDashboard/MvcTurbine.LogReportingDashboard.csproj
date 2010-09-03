@@ -89,6 +89,7 @@
     <Compile Include="Blades\LogReportingRepositoryRegistrationBlade.cs" />
     <Compile Include="Blades\NLogSetupBlade.cs" />
     <Compile Include="Controllers\LoggingController.cs" />
+    <Compile Include="LoggingConfiguration.cs" />
     <Compile Include="Helpers\DateTimeExtensionMethods.cs" />
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Helpers\FormsHelper.cs" />
