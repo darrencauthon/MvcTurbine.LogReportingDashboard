@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="LoggingConfiguration_AuthenticationTests.cs" />
     <Compile Include="LoggingConfiguration_PageNameTests.cs" />
+    <Compile Include="LoggingConfiguration_QuerystringDataTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

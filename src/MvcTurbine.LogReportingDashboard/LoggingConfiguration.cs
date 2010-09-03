@@ -40,5 +40,21 @@
         {
             return requireTheUserToBeAuthenticated;
         }
+
+        public bool TheQuerystringShouldBeUsed()
+        {
+            return string.IsNullOrEmpty(key) == false &&
+                   string.IsNullOrEmpty(value) == false;
+        }
+
+        public string GetTheQueryStringKey()
+        {
+            return key;
+        }
+
+        public string GetTheQueryStringValue()
+        {
+            return value;
+        }
     }
 }
