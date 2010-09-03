@@ -1,4 +1,6 @@
-﻿namespace MvcTurbine.LogReportingDashboard
+﻿using System;
+
+namespace MvcTurbine.LogReportingDashboard
 {
     public class LoggingConfiguration : IConfigureLogging
     {
@@ -7,9 +9,8 @@
         private string value;
         private bool requireTheUserToBeAuthenticated;
 
-        public void Configure()
+        public virtual void Configure()
         {
-            RequireTheUserToBeAuthenticated();
         }
 
         protected void RequireTheUserToBeAuthenticated()
@@ -30,6 +31,11 @@
         protected void UseThisPage(string pageName)
         {
             this.pageName = pageName;
+        }
+
+        public string LogDashboardPageName()
+        {
+            return pageName;
         }
     }
 }

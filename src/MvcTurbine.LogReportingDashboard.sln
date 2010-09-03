@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcTurbine.LogReportingDash
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApplication", "SampleApplication\SampleApplication.csproj", "{336AEA91-445E-4E37-B5E2-EF5322AED635}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcTurbine.LogReportingDashboard.Tests", "MvcTurbine.LogReportingDashboard.Tests\MvcTurbine.LogReportingDashboard.Tests.csproj", "{0FAEA98F-4E12-4A72-9403-096FE10BD502}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{336AEA91-445E-4E37-B5E2-EF5322AED635}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{336AEA91-445E-4E37-B5E2-EF5322AED635}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{336AEA91-445E-4E37-B5E2-EF5322AED635}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FAEA98F-4E12-4A72-9403-096FE10BD502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FAEA98F-4E12-4A72-9403-096FE10BD502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FAEA98F-4E12-4A72-9403-096FE10BD502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FAEA98F-4E12-4A72-9403-096FE10BD502}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
