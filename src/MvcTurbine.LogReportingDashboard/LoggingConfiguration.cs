@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MvcTurbine.LogReportingDashboard
+﻿namespace MvcTurbine.LogReportingDashboard
 {
     public class LoggingConfiguration : IConfigureLogging
     {
@@ -36,6 +34,11 @@ namespace MvcTurbine.LogReportingDashboard
         public string LogDashboardPageName()
         {
             return pageName;
+        }
+
+        public bool AuthenticationIsRequired()
+        {
+            return requireTheUserToBeAuthenticated;
         }
     }
 }
