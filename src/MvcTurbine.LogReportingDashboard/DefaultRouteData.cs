@@ -1,6 +1,6 @@
 ﻿namespace MvcTurbine.LogReportingDashboard
 {
-    public class LoggingConfiguration : IConfigureLogging, ILoggingRouteData
+    public class DefaultRouteData : ILoggingRouteData
     {
         private string pageName = "Logging";
         private string key;

@@ -18,7 +18,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
         [Test]
         public void The_default_page_name_is_Logging()
         {
-            var configuration = mocker.Resolve<LoggingConfiguration>();
+            var configuration = mocker.Resolve<DefaultRouteData>();
 
             var result = configuration.LogDashboardPageName();
 
@@ -28,7 +28,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
         [Test]
         public void UseThisPageName_will_set_the_name_of_the_page()
         {
-            var configuration = mocker.Resolve<TestLoggingConfiguration>();
+            var configuration = mocker.Resolve<TestDefaultRouteData>();
             configuration.PageName = "expected";
             configuration.Configure();
 
@@ -37,7 +37,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
             result.ShouldEqual("expected");
         }
 
-        public class TestLoggingConfiguration : LoggingConfiguration
+        public class TestDefaultRouteData : DefaultRouteData
         {
             public string PageName { get; set; }
 

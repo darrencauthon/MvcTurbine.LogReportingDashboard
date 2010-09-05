@@ -2,6 +2,7 @@
 {
     public interface ILoggingRouteData
     {
+        void Configure();
         string LogDashboardPageName();
         bool AuthenticationIsRequired();
         bool TheQuerystringShouldBeUsed();

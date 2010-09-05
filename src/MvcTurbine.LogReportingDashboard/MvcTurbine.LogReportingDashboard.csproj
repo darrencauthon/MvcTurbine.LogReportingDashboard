@@ -91,7 +91,7 @@
     <Compile Include="Blades\NLogSetupBlade.cs" />
     <Compile Include="Controllers\LoggingController.cs" />
     <Compile Include="ILoggingRouteData.cs" />
-    <Compile Include="LoggingConfiguration.cs" />
+    <Compile Include="DefaultRouteData.cs" />
     <Compile Include="Helpers\DateTimeExtensionMethods.cs" />
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Helpers\FormsHelper.cs" />
@@ -99,7 +99,6 @@
     <Compile Include="Helpers\StringExtensionMethods.cs" />
     <Compile Include="Helpers\TimePeriodHelper.cs" />
     <Compile Include="Helpers\UrlHelperExtensions.cs" />
-    <Compile Include="IConfigureLogging.cs" />
     <Compile Include="Models\Entities\MvcLoggingContainer.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
