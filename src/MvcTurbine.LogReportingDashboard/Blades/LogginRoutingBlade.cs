@@ -11,12 +11,12 @@ namespace MvcTurbine.LogReportingDashboard.Blades
     {
         public override void Spin(IRotorContext context)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void AddRegistrations(AutoRegistrationList registrationList)
         {
-            registrationList.Add(MvcTurbine.ComponentModel.Registration.Custom<ILoggingRouteData>())
+            //registrationList.Add(MvcTurbine.ComponentModel.Registration.Custom<ILoggingRouteData>());
         }
     }
 }
