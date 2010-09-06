@@ -22,7 +22,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
             var configuration = mocker.Resolve<LoggingConfiguration>();
             configuration.Configure();
 
-            var result = configuration.LoggingRouteData.TheQuerystringShouldBeUsed;
+            var result = configuration.LoggingRouteData.TheQueryStringShouldBeUsed;
 
             result.ShouldBeFalse();
         }
@@ -36,7 +36,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
 
             configuration.Configure();
 
-            var result = configuration.LoggingRouteData.TheQuerystringShouldBeUsed;
+            var result = configuration.LoggingRouteData.TheQueryStringShouldBeUsed;
 
             result.ShouldBeTrue();
         }
@@ -49,7 +49,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
 
             configuration.Configure();
 
-            var result = configuration.LoggingRouteData.TheQuerystringShouldBeUsed;
+            var result = configuration.LoggingRouteData.TheQueryStringShouldBeUsed;
 
             result.ShouldBeFalse();
         }
@@ -62,7 +62,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
 
             configuration.Configure();
 
-            var result = configuration.LoggingRouteData.TheQuerystringShouldBeUsed;
+            var result = configuration.LoggingRouteData.TheQueryStringShouldBeUsed;
 
             result.ShouldBeFalse();
         }

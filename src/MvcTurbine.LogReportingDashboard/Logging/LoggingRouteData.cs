@@ -12,7 +12,7 @@
         public string QueryStringValue { get; set; }
         public bool RequireAuthentication { get; set; }
 
-        public bool TheQuerystringShouldBeUsed
+        public bool TheQueryStringShouldBeUsed
         {
             get
             {

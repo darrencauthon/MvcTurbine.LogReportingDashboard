@@ -36,7 +36,7 @@ namespace MvcTurbine.LogReportingDashboard.Routing
 
         private static bool TheQueryStringValuesDoNotMatch(LoggingRouteData loggingConfiguration)
         {
-            return loggingConfiguration.TheQuerystringShouldBeUsed &&
+            return loggingConfiguration.TheQueryStringShouldBeUsed &&
                    (HttpContext.Current.Request[loggingConfiguration.QueryStringKey] !=
                     loggingConfiguration.QueryStringValue);
         }
