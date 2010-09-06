@@ -29,7 +29,7 @@ namespace MvcTurbine.LogReportingDashboard.Routing
 
         private string GetThePageName()
         {
-            return serviceLocator.Resolve<LoggingRouteData>()
+            return serviceLocator.Resolve<LoggingConfiguration>()
                 .Page;
         }
     }

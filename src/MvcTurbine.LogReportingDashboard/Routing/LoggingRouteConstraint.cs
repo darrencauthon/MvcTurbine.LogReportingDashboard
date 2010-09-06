@@ -33,23 +33,23 @@ namespace MvcTurbine.LogReportingDashboard.Routing
             return true;
         }
 
-        private static bool TheQueryStringValuesDoNotMatch(LoggingRouteData loggingRouteData)
+        private static bool TheQueryStringValuesDoNotMatch(LoggingConfiguration loggingConfiguration)
         {
-            return loggingRouteData.TheQuerystringShouldBeUsed &&
-                   (HttpContext.Current.Request[loggingRouteData.QueryStringKey] !=
-                    loggingRouteData.QueryStringValue);
+            return loggingConfiguration.TheQuerystringShouldBeUsed &&
+                   (HttpContext.Current.Request[loggingConfiguration.QueryStringKey] !=
+                    loggingConfiguration.QueryStringValue);
         }
 
-        private static bool AuthenticationIsRequiredButCurrentUserIsNot(LoggingRouteData loggingRouteData)
+        private static bool AuthenticationIsRequiredButCurrentUserIsNot(LoggingConfiguration loggingConfiguration)
         {
-            return loggingRouteData.AuthenticationIsRequired &&
+            return loggingConfiguration.AuthenticationIsRequired &&
                    HttpContext.Current.User.Identity.IsAuthenticated == false;
         }
 
-        private static bool TheControllerNameDoesNotMatch(RouteValueDictionary values, LoggingRouteData loggingRouteData)
+        private static bool TheControllerNameDoesNotMatch(RouteValueDictionary values, LoggingConfiguration loggingConfiguration)
         {
             var page = GetTheCurrentPage();
-            return string.Compare(page, loggingRouteData.Page, StringComparison.CurrentCultureIgnoreCase) != 0;
+            return string.Compare(page, loggingConfiguration.Page, StringComparison.CurrentCultureIgnoreCase) != 0;
         }
 
         private static string GetTheCurrentPage()
@@ -58,9 +58,9 @@ namespace MvcTurbine.LogReportingDashboard.Routing
                 .FirstOrDefault(x => x != "/");
         }
 
-        private LoggingRouteData GetTheLoggingRouteData()
+        private LoggingConfiguration GetTheLoggingRouteData()
         {
-            return serviceLocator.Resolve<LoggingRouteData>();
+            return serviceLocator.Resolve<LoggingConfiguration>();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
         [Test]
         public void Authentication_is_not_required_by_default()
         {
-            var configuration = mocker.Resolve<LoggingRouteData>();
+            var configuration = mocker.Resolve<LoggingConfiguration>();
             configuration.Configure();
 
             var result = configuration.AuthenticationIsRequired;
@@ -29,7 +29,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
         [Test]
         public void Authentication_is_required_when_RequireTheUserToBeAuthenticated_is_called()
         {
-            var configuration = mocker.Resolve<TestLoggingRouteData>();
+            var configuration = mocker.Resolve<TestLoggingConfiguration>();
             configuration.RequireAuthentication = true;
             configuration.Configure();
 
@@ -38,7 +38,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
             result.ShouldBeTrue();
         }
 
-        public class TestLoggingRouteData : LoggingRouteData
+        public class TestLoggingConfiguration : LoggingConfiguration
         {
             public bool RequireAuthentication { get; set; }
 
