@@ -47,7 +47,8 @@ namespace MvcTurbine.LogReportingDashboard.Routing
                    HttpContext.Current.User.Identity.IsAuthenticated == false;
         }
 
-        private static bool TheControllerNameDoesNotMatch(RouteValueDictionary values, LoggingRouteData loggingConfiguration)
+        private static bool TheControllerNameDoesNotMatch(RouteValueDictionary values,
+                                                          LoggingRouteData loggingConfiguration)
         {
             var page = GetTheCurrentPage();
             return string.Compare(page, loggingConfiguration.Page, StringComparison.CurrentCultureIgnoreCase) != 0;
@@ -56,7 +57,9 @@ namespace MvcTurbine.LogReportingDashboard.Routing
         private static string GetTheCurrentPage()
         {
             return HttpContext.Current.Request.Url.Segments
-                .FirstOrDefault(x => x != "/");
+                .Select(x => (x ?? string.Empty).Replace("/", ""))
+                .Where(x => string.IsNullOrEmpty(x) == false)
+                .FirstOrDefault();
         }
 
         private LoggingRouteData GetTheLoggingRouteData()

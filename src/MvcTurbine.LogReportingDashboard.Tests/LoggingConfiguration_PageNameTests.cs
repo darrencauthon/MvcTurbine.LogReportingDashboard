@@ -23,7 +23,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
 
             var result = configuration.LoggingRouteData.Page;
 
-            result.ShouldEqual("Logging");
+            result.ShouldEqual("_Logging");
         }
 
         [Test]

@@ -4,7 +4,7 @@
     {
         public LoggingRouteData()
         {
-            Page = "Logging";
+            Page = "_Logging";
         }
 
         public string Page { get; set; }
