@@ -28,13 +28,19 @@ namespace SampleApplication.Routing
 
         public ControllerInThisAssemblyRestraint()
         {
-            list = (this).GetType().Assembly
+            list = GetListOfControllersInThisAssembly();
+        }
+
+        private IEnumerable<string> GetListOfControllersInThisAssembly()
+        {
+            return (this).GetType().Assembly
                 .GetTypes()
                 .Where(x => x.BaseType == typeof (Controller))
                 .Select(x => x.Name.Substring(0, x.Name.Length - "Controller".Length));
         }
 
-        public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
+        public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values,
+                          RouteDirection routeDirection)
         {
             return list.Contains((string) values["controller"]);
         }
