@@ -1,11 +1,15 @@
-﻿namespace MvcTurbine.LogReportingDashboard
+﻿using MvcTurbine.LogReportingDashboard.Logging;
+
+namespace MvcTurbine.LogReportingDashboard
 {
     public class LoggingConfiguration
     {
-        private string page = "Logging";
-        private string key;
-        private string value;
-        private bool requireTheUserToBeAuthenticated;
+        private readonly LoggingRouteData loggingRouteData;
+
+        public LoggingConfiguration(LoggingRouteData loggingRouteData)
+        {
+            this.loggingRouteData = loggingRouteData;
+        }
 
         public virtual void Configure()
         {
@@ -13,57 +17,47 @@
 
         protected void RequireTheUserToBeAuthenticated()
         {
-            requireTheUserToBeAuthenticated = true;
+            loggingRouteData.RequireAuthentication = true;
         }
 
         protected void CheckForThisInTheQueryString(string key, string value)
         {
-            LookForThisKeyInTheQueryString(key);
-            LookForThisValueInTheQueryString(value);
-        }
-
-        private void LookForThisValueInTheQueryString(string value)
-        {
-            this.value = value;
-        }
-
-        private void LookForThisKeyInTheQueryString(string key)
-        {
-            this.key = key;
+            loggingRouteData.QueryStringKey = key;
+            loggingRouteData.QueryStringValue = value;
         }
 
         protected void UseThisPage(string page)
         {
-            this.page = page;
+            loggingRouteData.Page = page;
         }
 
         public string Page
         {
-            get { return page; }
+            get { return loggingRouteData.Page; }
         }
 
         public bool AuthenticationIsRequired
         {
-            get { return requireTheUserToBeAuthenticated; }
+            get { return loggingRouteData.RequireAuthentication; }
         }
 
         public bool TheQuerystringShouldBeUsed
         {
             get
             {
-                return string.IsNullOrEmpty(key) == false &&
-                       string.IsNullOrEmpty(value) == false;
+                return string.IsNullOrEmpty(loggingRouteData.QueryStringKey) == false &&
+                       string.IsNullOrEmpty(loggingRouteData.QueryStringValue) == false;
             }
         }
 
         public string QueryStringKey
         {
-            get { return key; }
+            get { return loggingRouteData.QueryStringKey; }
         }
 
         public string QueryStringValue
         {
-            get { return value; }
+            get { return loggingRouteData.QueryStringValue; }
         }
     }
 }

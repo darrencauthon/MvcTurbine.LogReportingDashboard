@@ -1,4 +1,5 @@
 ﻿using AutoMoq;
+using MvcTurbine.LogReportingDashboard.Logging;
 using NUnit.Framework;
 using Should;
 
@@ -96,6 +97,9 @@ namespace MvcTurbine.LogReportingDashboard.Tests
         {
             public string Key { get; set; }
             public string Value { get; set; }
+
+            public TestLoggingConfiguration()
+                : base(new LoggingRouteData()){}
 
             public override void Configure()
             {

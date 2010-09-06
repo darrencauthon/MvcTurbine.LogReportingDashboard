@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Routing;
 using MvcTurbine.ComponentModel;
+using MvcTurbine.LogReportingDashboard.Logging;
 
 namespace MvcTurbine.LogReportingDashboard.Routing
 {
@@ -33,20 +34,20 @@ namespace MvcTurbine.LogReportingDashboard.Routing
             return true;
         }
 
-        private static bool TheQueryStringValuesDoNotMatch(LoggingConfiguration loggingConfiguration)
+        private static bool TheQueryStringValuesDoNotMatch(LoggingRouteData loggingConfiguration)
         {
             return loggingConfiguration.TheQuerystringShouldBeUsed &&
                    (HttpContext.Current.Request[loggingConfiguration.QueryStringKey] !=
                     loggingConfiguration.QueryStringValue);
         }
 
-        private static bool AuthenticationIsRequiredButCurrentUserIsNot(LoggingConfiguration loggingConfiguration)
+        private static bool AuthenticationIsRequiredButCurrentUserIsNot(LoggingRouteData loggingConfiguration)
         {
-            return loggingConfiguration.AuthenticationIsRequired &&
+            return loggingConfiguration.RequireAuthentication &&
                    HttpContext.Current.User.Identity.IsAuthenticated == false;
         }
 
-        private static bool TheControllerNameDoesNotMatch(RouteValueDictionary values, LoggingConfiguration loggingConfiguration)
+        private static bool TheControllerNameDoesNotMatch(RouteValueDictionary values, LoggingRouteData loggingConfiguration)
         {
             var page = GetTheCurrentPage();
             return string.Compare(page, loggingConfiguration.Page, StringComparison.CurrentCultureIgnoreCase) != 0;
@@ -58,9 +59,9 @@ namespace MvcTurbine.LogReportingDashboard.Routing
                 .FirstOrDefault(x => x != "/");
         }
 
-        private LoggingConfiguration GetTheLoggingRouteData()
+        private LoggingRouteData GetTheLoggingRouteData()
         {
-            return serviceLocator.Resolve<LoggingConfiguration>();
+            return serviceLocator.Resolve<LoggingRouteData>();
         }
     }
 }

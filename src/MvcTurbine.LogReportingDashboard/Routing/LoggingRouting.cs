@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 using MvcTurbine.ComponentModel;
+using MvcTurbine.LogReportingDashboard.Logging;
 using MvcTurbine.Routing;
 
 namespace MvcTurbine.LogReportingDashboard.Routing
@@ -29,7 +30,7 @@ namespace MvcTurbine.LogReportingDashboard.Routing
 
         private string GetThePageName()
         {
-            return serviceLocator.Resolve<LoggingConfiguration>()
+            return serviceLocator.Resolve<LoggingRouteData>()
                 .Page;
         }
     }

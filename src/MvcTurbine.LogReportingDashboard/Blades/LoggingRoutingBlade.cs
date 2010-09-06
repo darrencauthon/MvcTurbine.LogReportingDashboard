@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MvcTurbine.Blades;
 using MvcTurbine.ComponentModel;
+using MvcTurbine.LogReportingDashboard.Logging;
 
 namespace MvcTurbine.LogReportingDashboard.Blades
 {
@@ -23,6 +24,8 @@ namespace MvcTurbine.LogReportingDashboard.Blades
         public void AddRegistrations(AutoRegistrationList registrationList)
         {
             //registrationList.Add(ComponentModel.Registration.Simple<ILoggingRouteData>());
+
+            serviceLocator.Register(new LoggingRouteData());
 
             var list = new List<Type>();
 

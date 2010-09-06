@@ -98,6 +98,7 @@
     <Compile Include="Helpers\StringExtensionMethods.cs" />
     <Compile Include="Helpers\TimePeriodHelper.cs" />
     <Compile Include="Helpers\UrlHelperExtensions.cs" />
+    <Compile Include="Logging\LoggingRouteData.cs" />
     <Compile Include="Models\Entities\MvcLoggingContainer.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

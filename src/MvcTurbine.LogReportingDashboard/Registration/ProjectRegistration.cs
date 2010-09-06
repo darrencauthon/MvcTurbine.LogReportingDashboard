@@ -1,4 +1,5 @@
 ﻿using MvcTurbine.ComponentModel;
+using MvcTurbine.LogReportingDashboard.Logging;
 using MvcTurbine.LogReportingDashboard.Models.Entities;
 using MvcTurbine.LogReportingDashboard.Models.Repository;
 using MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces;
@@ -12,8 +13,9 @@ namespace MvcTurbine.LogReportingDashboard.Registration
             locator.Register<ILogReportingFacade, LogReportingFacade>();
             locator.Register(() => new MvcLoggingContainer());
 
-            var routingData = new LoggingConfiguration();
-            locator.Register<LoggingConfiguration>(routingData);
+            locator.Register(new LoggingRouteData());
+
+            //locator.Register<LoggingConfiguration>(routingData);
         }
     }
 }
