@@ -22,7 +22,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
             var configuration = mocker.Resolve<LoggingConfiguration>();
             configuration.Configure();
 
-            var result = configuration.AuthenticationIsRequired;
+            var result = configuration.LoggingRouteData.RequireAuthentication;
 
             result.ShouldBeFalse();
         }
@@ -34,7 +34,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
             configuration.RequireAuthentication = true;
             configuration.Configure();
 
-            var result = configuration.AuthenticationIsRequired;
+            var result = configuration.LoggingRouteData.RequireAuthentication;
 
             result.ShouldBeTrue();
         }

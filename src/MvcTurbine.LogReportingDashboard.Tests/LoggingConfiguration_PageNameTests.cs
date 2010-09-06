@@ -21,7 +21,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
         {
             var configuration = mocker.Resolve<LoggingConfiguration>();
 
-            var result = configuration.Page;
+            var result = configuration.LoggingRouteData.Page;
 
             result.ShouldEqual("Logging");
         }
@@ -33,7 +33,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
             configuration.PageName = "expected";
             configuration.Configure();
 
-            var result = configuration.Page;
+            var result = configuration.LoggingRouteData.Page;
 
             result.ShouldEqual("expected");
         }

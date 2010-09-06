@@ -15,6 +15,11 @@ namespace MvcTurbine.LogReportingDashboard
         {
         }
 
+        public LoggingRouteData LoggingRouteData
+        {
+            get { return LoggingRouteData; }
+        }
+
         protected void RequireTheUserToBeAuthenticated()
         {
             loggingRouteData.RequireAuthentication = true;
@@ -29,35 +34,6 @@ namespace MvcTurbine.LogReportingDashboard
         protected void UseThisPage(string page)
         {
             loggingRouteData.Page = page;
-        }
-
-        public string Page
-        {
-            get { return loggingRouteData.Page; }
-        }
-
-        public bool AuthenticationIsRequired
-        {
-            get { return loggingRouteData.RequireAuthentication; }
-        }
-
-        public bool TheQuerystringShouldBeUsed
-        {
-            get
-            {
-                return string.IsNullOrEmpty(loggingRouteData.QueryStringKey) == false &&
-                       string.IsNullOrEmpty(loggingRouteData.QueryStringValue) == false;
-            }
-        }
-
-        public string QueryStringKey
-        {
-            get { return loggingRouteData.QueryStringKey; }
-        }
-
-        public string QueryStringValue
-        {
-            get { return loggingRouteData.QueryStringValue; }
         }
     }
 }

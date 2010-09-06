@@ -14,7 +14,11 @@
 
         public bool TheQuerystringShouldBeUsed
         {
-            get { return false; }
+            get
+            {
+                return string.IsNullOrEmpty(QueryStringKey) == false &&
+                       string.IsNullOrEmpty(QueryStringValue) == false;
+            }
         }
     }
 }
