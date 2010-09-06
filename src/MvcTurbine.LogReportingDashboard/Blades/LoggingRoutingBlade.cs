@@ -18,29 +18,47 @@ namespace MvcTurbine.LogReportingDashboard.Blades
 
         public override void Spin(IRotorContext context)
         {
-            // 
+            // nothing
         }
 
         public void AddRegistrations(AutoRegistrationList registrationList)
         {
-            //registrationList.Add(ComponentModel.Registration.Simple<ILoggingRouteData>());
+            RegisterASingleInstanceOfTheRoutingData();
 
+            var loggingConfiguration = GetTheLoggingConfiguration();
+            loggingConfiguration.Configure();
+        }
+
+        private void RegisterASingleInstanceOfTheRoutingData()
+        {
             serviceLocator.Register(new LoggingRouteData());
+        }
 
+        private LoggingConfiguration GetTheLoggingConfiguration()
+        {
+            var list = GetAllLoggingConfigurations();
+
+            return serviceLocator.Resolve<LoggingConfiguration>(
+                list.OrderBy(PlaceAnyLoggingConfigurationThatIsNotTheDefaultFirst)
+                    .First());
+        }
+
+        private static int PlaceAnyLoggingConfigurationThatIsNotTheDefaultFirst(Type x)
+        {
+            return x == typeof (LoggingConfiguration) ? 1 : 0;
+        }
+
+        private static IEnumerable<Type> GetAllLoggingConfigurations()
+        {
             var list = new List<Type>();
 
             AppDomain.CurrentDomain.GetAssemblies().ToList()
                 .ForEach(x => x.GetTypes()
-                .Where(y=>y == typeof(LoggingConfiguration) || y.BaseType == typeof(LoggingConfiguration))
-                .ToList().ForEach(z=>list.Add(z)));
-
-            var loggingData = serviceLocator.Resolve<LoggingConfiguration>(list
-                .OrderBy(x => x == typeof(LoggingConfiguration) ? 1 : 0)
-                .First());
-
-            loggingData.Configure();
-
-            serviceLocator.Register(loggingData);
+                                  .Where(
+                                      y =>
+                                      y == typeof (LoggingConfiguration) || y.BaseType == typeof (LoggingConfiguration))
+                                  .ToList().ForEach(list.Add));
+            return list;
         }
     }
 }
