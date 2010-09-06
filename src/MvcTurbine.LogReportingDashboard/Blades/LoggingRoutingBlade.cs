@@ -23,15 +23,16 @@ namespace MvcTurbine.LogReportingDashboard.Blades
 
         public void AddRegistrations(AutoRegistrationList registrationList)
         {
-            RegisterASingleInstanceOfTheRoutingData();
+            RegisterASingleInstanceOfAllConfiguration();
 
             var loggingConfiguration = GetTheLoggingConfiguration();
             loggingConfiguration.Configure();
         }
 
-        private void RegisterASingleInstanceOfTheRoutingData()
+        private void RegisterASingleInstanceOfAllConfiguration()
         {
             serviceLocator.Register(new LoggingRouteData());
+            serviceLocator.Register(new LoggerExclusionSet());
         }
 
         private LoggingConfiguration GetTheLoggingConfiguration()
