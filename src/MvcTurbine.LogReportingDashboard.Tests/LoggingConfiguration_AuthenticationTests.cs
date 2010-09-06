@@ -44,7 +44,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
             public bool RequireAuthentication { get; set; }
 
             public TestLoggingConfiguration()
-                : base(new LoggingRouteData())
+                : base(new LoggingRouteData(), new LoggerExclusionSet())
             {
             }
 

@@ -43,7 +43,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
             public string PageName { get; set; }
 
             public TestLoggingConfiguration()
-                : base (new LoggingRouteData()){}
+                : base (new LoggingRouteData(), new LoggerExclusionSet()){}
 
             public override void Configure()
             {
