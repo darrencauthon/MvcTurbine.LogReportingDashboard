@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SampleApplication.Logging
 {
-    public class RoutingData : MvcTurbine.LogReportingDashboard.DefaultRouteData
+    public class RoutingData : MvcTurbine.LogReportingDashboard.LoggingRouteData
     {
         public override void Configure()
         {

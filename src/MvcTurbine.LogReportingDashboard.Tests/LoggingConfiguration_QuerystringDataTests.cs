@@ -18,10 +18,10 @@ namespace MvcTurbine.LogReportingDashboard.Tests
         [Test]
         public void The_querystring_is_not_used_by_default()
         {
-            var configuration = mocker.Resolve<DefaultRouteData>();
+            var configuration = mocker.Resolve<LoggingRouteData>();
             configuration.Configure();
 
-            var result = configuration.TheQuerystringShouldBeUsed();
+            var result = configuration.TheQuerystringShouldBeUsed;
 
             result.ShouldBeFalse();
         }
@@ -29,13 +29,13 @@ namespace MvcTurbine.LogReportingDashboard.Tests
         [Test]
         public void The_string_is_used_when_a_key_and_value_are_set()
         {
-            var configuration = mocker.Resolve<TestDefaultRouteData>();
+            var configuration = mocker.Resolve<TestLoggingRouteData>();
             configuration.Key = "Key";
             configuration.Value = "Value";
 
             configuration.Configure();
 
-            var result = configuration.TheQuerystringShouldBeUsed();
+            var result = configuration.TheQuerystringShouldBeUsed;
 
             result.ShouldBeTrue();
         }
@@ -43,12 +43,12 @@ namespace MvcTurbine.LogReportingDashboard.Tests
         [Test]
         public void The_string_is_not_used_when_a_key_is_not_set()
         {
-            var configuration = mocker.Resolve<TestDefaultRouteData>();
+            var configuration = mocker.Resolve<TestLoggingRouteData>();
             configuration.Key = "Key";
 
             configuration.Configure();
 
-            var result = configuration.TheQuerystringShouldBeUsed();
+            var result = configuration.TheQuerystringShouldBeUsed;
 
             result.ShouldBeFalse();
         }
@@ -56,12 +56,12 @@ namespace MvcTurbine.LogReportingDashboard.Tests
         [Test]
         public void The_string_is_not_used_when_a_value_is_not_set()
         {
-            var configuration = mocker.Resolve<TestDefaultRouteData>();
+            var configuration = mocker.Resolve<TestLoggingRouteData>();
             configuration.Value = "Value";
 
             configuration.Configure();
 
-            var result = configuration.TheQuerystringShouldBeUsed();
+            var result = configuration.TheQuerystringShouldBeUsed;
 
             result.ShouldBeFalse();
         }
@@ -69,12 +69,12 @@ namespace MvcTurbine.LogReportingDashboard.Tests
         [Test]
         public void The_querystring_key_is_set_by_the_LookForThisKeyInTheQueryString_method()
         {
-            var configuration = mocker.Resolve<TestDefaultRouteData>();
+            var configuration = mocker.Resolve<TestLoggingRouteData>();
             configuration.Key = "Key";
 
             configuration.Configure();
 
-            var result = configuration.GetTheQueryStringKey();
+            var result = configuration.QueryStringKey;
 
             result.ShouldEqual("Key");
         }
@@ -82,17 +82,17 @@ namespace MvcTurbine.LogReportingDashboard.Tests
         [Test]
         public void The_querystring_value_is_set_by_the_LookForThisValueInTheQueryString_method()
         {
-            var configuration = mocker.Resolve<TestDefaultRouteData>();
+            var configuration = mocker.Resolve<TestLoggingRouteData>();
             configuration.Value = "Value";
 
             configuration.Configure();
 
-            var result = configuration.GetTheQueryStringValue();
+            var result = configuration.QueryStringValue;
 
             result.ShouldEqual("Value");
         }
 
-        public class TestDefaultRouteData : DefaultRouteData
+        public class TestLoggingRouteData : LoggingRouteData
         {
             public string Key { get; set; }
             public string Value { get; set; }

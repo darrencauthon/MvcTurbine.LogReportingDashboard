@@ -28,11 +28,11 @@ namespace MvcTurbine.LogReportingDashboard.Blades
 
             AppDomain.CurrentDomain.GetAssemblies().ToList()
                 .ForEach(x => x.GetTypes()
-                .Where(y=>y == typeof(DefaultRouteData) || y.BaseType == typeof(DefaultRouteData))
+                .Where(y=>y == typeof(LoggingRouteData) || y.BaseType == typeof(LoggingRouteData))
                 .ToList().ForEach(z=>list.Add(z)));
 
-            var loggingData = serviceLocator.Resolve<DefaultRouteData>(list
-                .OrderBy(x => x == typeof(DefaultRouteData) ? 1 : 0)
+            var loggingData = serviceLocator.Resolve<LoggingRouteData>(list
+                .OrderBy(x => x == typeof(LoggingRouteData) ? 1 : 0)
                 .First());
 
             loggingData.Configure();

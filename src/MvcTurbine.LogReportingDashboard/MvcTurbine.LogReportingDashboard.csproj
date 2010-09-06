@@ -90,7 +90,7 @@
     <Compile Include="Blades\LogReportingRepositoryRegistrationBlade.cs" />
     <Compile Include="Blades\NLogSetupBlade.cs" />
     <Compile Include="Controllers\LoggingController.cs" />
-    <Compile Include="DefaultRouteData.cs" />
+    <Compile Include="LoggingRouteData.cs" />
     <Compile Include="Helpers\DateTimeExtensionMethods.cs" />
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Helpers\FormsHelper.cs" />
@@ -108,6 +108,7 @@
     <Compile Include="Models\Repository\HealthMonitoringRepository.cs" />
     <Compile Include="Models\Repository\Interfaces\ILogReportingFacade.cs" />
     <Compile Include="Models\Repository\Interfaces\ILogReportingRepository.cs" />
+    <Compile Include="Routing\LoggingRouteConstraint.cs" />
     <Compile Include="Routing\LoggingRouting.cs" />
     <Compile Include="ThingsToFixLater\Log4NetRepository.cs" />
     <Compile Include="Models\Repository\LogReportingFacade.cs" />

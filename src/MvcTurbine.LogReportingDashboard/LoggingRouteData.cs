@@ -1,8 +1,8 @@
 ﻿namespace MvcTurbine.LogReportingDashboard
 {
-    public class DefaultRouteData
+    public class LoggingRouteData
     {
-        private string pageName = "Logging";
+        private string page = "Logging";
         private string key;
         private string value;
         private bool requireTheUserToBeAuthenticated;
@@ -26,35 +26,38 @@
             this.key = key;
         }
 
-        protected void UseThisPage(string pageName)
+        protected void UseThisPage(string page)
         {
-            this.pageName = pageName;
+            this.page = page;
         }
 
-        public string LogDashboardPageName()
+        public string Page
         {
-            return pageName;
+            get { return page; }
         }
 
-        public bool AuthenticationIsRequired()
+        public bool AuthenticationIsRequired
         {
-            return requireTheUserToBeAuthenticated;
+            get { return requireTheUserToBeAuthenticated; }
         }
 
-        public bool TheQuerystringShouldBeUsed()
+        public bool TheQuerystringShouldBeUsed
         {
-            return string.IsNullOrEmpty(key) == false &&
-                   string.IsNullOrEmpty(value) == false;
+            get
+            {
+                return string.IsNullOrEmpty(key) == false &&
+                       string.IsNullOrEmpty(value) == false;
+            }
         }
 
-        public string GetTheQueryStringKey()
+        public string QueryStringKey
         {
-            return key;
+            get { return key; }
         }
 
-        public string GetTheQueryStringValue()
+        public string QueryStringValue
         {
-            return value;
+            get { return value; }
         }
     }
 }

@@ -12,8 +12,8 @@ namespace MvcTurbine.LogReportingDashboard.Registration
             locator.Register<ILogReportingFacade, LogReportingFacade>();
             locator.Register(() => new MvcLoggingContainer());
 
-            var routingData = new DefaultRouteData();
-            locator.Register<DefaultRouteData>(routingData);
+            var routingData = new LoggingRouteData();
+            locator.Register<LoggingRouteData>(routingData);
         }
     }
 }
