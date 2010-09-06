@@ -1,14 +1,18 @@
-﻿using MvcTurbine.LogReportingDashboard.Logging;
+﻿using System;
+using System.Collections.Generic;
+using MvcTurbine.LogReportingDashboard.Logging;
 
 namespace MvcTurbine.LogReportingDashboard
 {
     public class LoggingConfiguration
     {
         private readonly LoggingRouteData loggingRouteData;
+        private readonly IList<Type> loggersToExclude;
 
         public LoggingConfiguration(LoggingRouteData loggingRouteData)
         {
             this.loggingRouteData = loggingRouteData;
+            loggersToExclude = new List<Type>();
         }
 
         public virtual void Configure()
@@ -17,8 +21,10 @@ namespace MvcTurbine.LogReportingDashboard
 
         public LoggingRouteData LoggingRouteData
         {
-            get { return LoggingRouteData; }
+            get { return loggingRouteData; }
         }
+
+        public IEnumerable<Type> RepositoriesToExclude { get { return loggersToExclude; } }
 
         protected void RequireTheUserToBeAuthenticated()
         {
@@ -34,6 +40,11 @@ namespace MvcTurbine.LogReportingDashboard
         protected void UseThisPage(string page)
         {
             loggingRouteData.Page = page;
+        }
+
+        public void ExcludeThisLogger(Type type)
+        {
+            loggersToExclude.Add(type);
         }
     }
 }
