@@ -13,7 +13,10 @@ namespace MvcTurbine.LogReportingDashboard.Blades
 
         public void AddRegistrations(AutoRegistrationList registrationList)
         {
-            registrationList.Add(ComponentModel.Registration.Simple<ILogReportingRepository>());
+            registrationList.Add(
+                ComponentModel.Registration.Custom<ILogReportingRepository>(RegistrationFilters.DefaultFilter,
+                                                                            (locator, type) =>
+                                                                            locator.Register<ILogReportingRepository>(type)));
         }
     }
 }
