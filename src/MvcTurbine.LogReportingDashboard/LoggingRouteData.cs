@@ -16,12 +16,18 @@
             requireTheUserToBeAuthenticated = true;
         }
 
-        protected void LookForThisValueInTheQueryString(string value)
+        protected void CheckForThisInTheQueryString(string key, string value)
+        {
+            LookForThisKeyInTheQueryString(key);
+            LookForThisValueInTheQueryString(value);
+        }
+
+        private void LookForThisValueInTheQueryString(string value)
         {
             this.value = value;
         }
 
-        protected void LookForThisKeyInTheQueryString(string key)
+        private void LookForThisKeyInTheQueryString(string key)
         {
             this.key = key;
         }

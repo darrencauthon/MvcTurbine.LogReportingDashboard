@@ -99,8 +99,7 @@ namespace MvcTurbine.LogReportingDashboard.Tests
 
             public override void Configure()
             {
-                LookForThisKeyInTheQueryString(Key);
-                LookForThisValueInTheQueryString(Value);
+                CheckForThisInTheQueryString(Key, Value);
             }
         }
     }
