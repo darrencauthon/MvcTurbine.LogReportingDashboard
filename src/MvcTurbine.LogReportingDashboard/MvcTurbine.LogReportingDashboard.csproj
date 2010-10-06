@@ -68,6 +68,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq">
@@ -110,6 +111,7 @@
     <Compile Include="Models\Repository\HealthMonitoringRepository.cs" />
     <Compile Include="Models\Repository\Interfaces\ILogReportingFacade.cs" />
     <Compile Include="Models\Repository\Interfaces\ILogReportingRepository.cs" />
+    <Compile Include="ActionResults\FeedResult.cs" />
     <Compile Include="Routing\LoggingRouteConstraint.cs" />
     <Compile Include="Routing\LoggingRouting.cs" />
     <Compile Include="ThingsToFixLater\Log4NetRepository.cs" />

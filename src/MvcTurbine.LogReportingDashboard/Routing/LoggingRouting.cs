@@ -26,6 +26,7 @@ namespace MvcTurbine.LogReportingDashboard.Routing
                 new {controller = "Logging", action = "Index", id = UrlParameter.Optional},
                 new {controller = constraint}
                 );
+            
         }
 
         private string GetThePageName()

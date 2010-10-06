@@ -7,6 +7,9 @@ using MvcTurbine.LogReportingDashboard.Models;
 using MvcTurbine.LogReportingDashboard.Models.Repository.Interfaces;
 using MvcTurbine.LogReportingDashboard.Services.Charting.Google.Visualization;
 using MvcTurbine.LogReportingDashboard.ViewModels;
+using MvcTurbine.LogReportingDashboard.Services.Paging;
+using System.ServiceModel.Syndication;
+using MvcTurbine.LogReportingDashboard.ActionResults;
 
 namespace MvcTurbine.LogReportingDashboard.Controllers
 {
@@ -159,6 +162,33 @@ namespace MvcTurbine.LogReportingDashboard.Controllers
             model.LogLevel = (LogLevel == null) ? defaultLogLevel : LogLevel;
 
             return View(model);
+        }
+
+        public FeedResult RssFeed(string Period, string LoggerProviderName, string LogLevel)
+        {
+            string defaultPeriod = Session["Period"] == null ? "This Week" : Session["Period"].ToString();
+            string defaultLoggerProviderName = Session["LoggerProviderName"] == null ? "All" : Session["LoggerProviderName"].ToString();
+            string defaultLogLevel = Session["LogLevel"] == null ? "Error" : Session["LogLevel"].ToString();
+
+            Period = (Period == null) ? defaultPeriod : Period;
+            LoggerProviderName = (LoggerProviderName == null) ? defaultLoggerProviderName : LoggerProviderName;
+            LogLevel = (LogLevel == null) ? defaultLogLevel : LogLevel;
+
+            TimePeriod timePeriod = TimePeriodHelper.GetUtcTimePeriod(Period);
+
+            // Grab ALL entries for the feed (DO NOT PAGE feed DATA!!!)
+            IPagedList<LogEvent> chartEntries = loggingRepository.GetByDateRangeAndType(0, Int32.MaxValue, timePeriod.Start, timePeriod.End, LoggerProviderName, LogLevel);
+
+            var postItems = chartEntries.Select(p => new SyndicationItem(string.Format("{0} - {1} - {2}", p.LogDate, p.Level, p.LoggerProviderName), p.Message, new Uri(Url.AbsoluteAction("Details", new { LoggerProviderName = p.LoggerProviderName, Id = p.Id }))));
+
+            Uri feedAlternateLink = Url.ActionFull("Index", "Logging");
+
+            var feed = new SyndicationFeed("MVC Logging Demo -> Log Reporting", string.Format("Log Provider: {0}, Log Level : {1}, From {2} to {3} ({4})", LoggerProviderName, LogLevel, timePeriod.Start.ToShortDateString(), timePeriod.End.ToShortDateString(), Period), feedAlternateLink, postItems)
+            {
+                Language = "en-US"
+            };
+
+            return new FeedResult(new Rss20FeedFormatter(feed));
         }
     }
 }
